@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.alejs.org/"/>
+  <link href="http://cn.alejs.org/"/>
   <updated>2018-12-10T03:42:51.040Z</updated>
-  <id>http://www.alejs.org/</id>
+  <id>http://cn.alejs.org/</id>
   
   <author>
     <name>Bill Dong</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Ale组件对象</title>
-    <link href="http://www.alejs.org/2018/12/03/aleCom/"/>
-    <id>http://www.alejs.org/2018/12/03/aleCom/</id>
+    <link href="http://cn.alejs.org/2018/12/03/aleCom/"/>
+    <id>http://cn.alejs.org/2018/12/03/aleCom/</id>
     <published>2018-12-02T16:00:00.000Z</published>
     <updated>2018-12-10T03:42:51.040Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>组件权限</title>
-    <link href="http://www.alejs.org/2018/12/02/permissionCom/"/>
-    <id>http://www.alejs.org/2018/12/02/permissionCom/</id>
+    <link href="http://cn.alejs.org/2018/12/02/permissionCom/"/>
+    <id>http://cn.alejs.org/2018/12/02/permissionCom/</id>
     <published>2018-12-01T16:00:00.000Z</published>
     <updated>2018-12-10T06:12:17.683Z</updated>
     
@@ -60,8 +60,8 @@
   
   <entry>
     <title>生命周期</title>
-    <link href="http://www.alejs.org/2018/12/01/lifeCom/"/>
-    <id>http://www.alejs.org/2018/12/01/lifeCom/</id>
+    <link href="http://cn.alejs.org/2018/12/01/lifeCom/"/>
+    <id>http://cn.alejs.org/2018/12/01/lifeCom/</id>
     <published>2018-11-30T16:00:00.000Z</published>
     <updated>2018-12-10T06:08:34.748Z</updated>
     
@@ -81,8 +81,8 @@
   
   <entry>
     <title>事件</title>
-    <link href="http://www.alejs.org/2018/11/30/events/"/>
-    <id>http://www.alejs.org/2018/11/30/events/</id>
+    <link href="http://cn.alejs.org/2018/11/30/events/"/>
+    <id>http://cn.alejs.org/2018/11/30/events/</id>
     <published>2018-11-29T16:00:00.000Z</published>
     <updated>2018-12-10T03:01:40.645Z</updated>
     
@@ -102,8 +102,8 @@
   
   <entry>
     <title>State</title>
-    <link href="http://www.alejs.org/2018/11/30/stateCom/"/>
-    <id>http://www.alejs.org/2018/11/30/stateCom/</id>
+    <link href="http://cn.alejs.org/2018/11/30/stateCom/"/>
+    <id>http://cn.alejs.org/2018/11/30/stateCom/</id>
     <published>2018-11-29T16:00:00.000Z</published>
     <updated>2018-12-10T03:05:15.120Z</updated>
     
@@ -123,8 +123,8 @@
   
   <entry>
     <title>组件基础</title>
-    <link href="http://www.alejs.org/2018/11/29/basicCom/"/>
-    <id>http://www.alejs.org/2018/11/29/basicCom/</id>
+    <link href="http://cn.alejs.org/2018/11/29/basicCom/"/>
+    <id>http://cn.alejs.org/2018/11/29/basicCom/</id>
     <published>2018-11-28T16:00:00.000Z</published>
     <updated>2018-12-10T04:24:47.846Z</updated>
     
@@ -144,8 +144,8 @@
   
   <entry>
     <title>Alen</title>
-    <link href="http://www.alejs.org/2018/11/28/alen/"/>
-    <id>http://www.alejs.org/2018/11/28/alen/</id>
+    <link href="http://cn.alejs.org/2018/11/28/alen/"/>
+    <id>http://cn.alejs.org/2018/11/28/alen/</id>
     <published>2018-11-27T16:00:00.000Z</published>
     <updated>2018-12-09T03:28:32.931Z</updated>
     
@@ -165,8 +165,8 @@
   
   <entry>
     <title>杂项属性</title>
-    <link href="http://www.alejs.org/2018/11/28/otherFun/"/>
-    <id>http://www.alejs.org/2018/11/28/otherFun/</id>
+    <link href="http://cn.alejs.org/2018/11/28/otherFun/"/>
+    <id>http://cn.alejs.org/2018/11/28/otherFun/</id>
     <published>2018-11-27T16:00:00.000Z</published>
     <updated>2018-12-10T04:23:07.383Z</updated>
     
@@ -186,8 +186,8 @@
   
   <entry>
     <title>介绍</title>
-    <link href="http://www.alejs.org/2018/11/27/introduction/"/>
-    <id>http://www.alejs.org/2018/11/27/introduction/</id>
+    <link href="http://cn.alejs.org/2018/11/27/introduction/"/>
+    <id>http://cn.alejs.org/2018/11/27/introduction/</id>
     <published>2018-11-26T16:00:00.000Z</published>
     <updated>2018-12-10T03:49:45.993Z</updated>
     
@@ -207,8 +207,8 @@
   
   <entry>
     <title>安装</title>
-    <link href="http://www.alejs.org/2018/11/26/installation/"/>
-    <id>http://www.alejs.org/2018/11/26/installation/</id>
+    <link href="http://cn.alejs.org/2018/11/26/installation/"/>
+    <id>http://cn.alejs.org/2018/11/26/installation/</id>
     <published>2018-11-25T16:00:00.000Z</published>
     <updated>2018-12-10T03:54:55.839Z</updated>
     
