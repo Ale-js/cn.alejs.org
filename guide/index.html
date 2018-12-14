@@ -134,28 +134,79 @@
     <div class="app-sidebar">
         <div class="app-sidebar-inner">
             <h2>教程</h2>
-<h3>基础</h3>
-<a href="/2018/11/26/installation" class="sidebar-link">安装</a>
-<div class="sidebar-br">
-<a href="/2018/11/27/introduction" class="sidebar-link">介绍</a>
-<div class="sidebar-br">
-<a href="/2018/11/28/otherFun" class="sidebar-link">杂项属性</a>
-<h3>深入组件</h3>
-<a href="/2018/11/29/basicCom" class="sidebar-link">组件基础</a>
-<div class="sidebar-br">
-<a href="/2018/11/30/events" class="sidebar-link">事件</a>
-<div class="sidebar-br">
-<a href="/2018/11/30/stateCom" class="sidebar-link">State</a>
-<div class="sidebar-br">
-<a href="/2018/12/01/lifeCom" class="sidebar-link">生命周期</a>
-<div class="sidebar-br">
-<a href="/2018/12/02/permissionCom" class="sidebar-link">组件权限</a>
-<div class="sidebar-br">
-<a href="/2018/12/03/aleCom" class="sidebar-link">Ale组件对象</a>
-<h3>模板引擎</h3>
-<a href="/2018/11/28/alen" class="sidebar-link">Alen</a>
-<div class="sidebar-br">
-</div></div></div></div></div></div></div></div>
+<select id="select-version" style="outline: none;">
+    <option value="0.3">0.3</option>
+    <option selected value="1.X">1.X</option>
+</select>
+
+
+<div id="v1X">
+    <h3>基础</h3>
+    <a href="/2018/11/26/installation" class="sidebar-link">安装</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/27/introduction" class="sidebar-link">介绍</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/28/otherFun" class="sidebar-link">杂项属性</a>
+    <h3>深入组件</h3>
+    <a href="/2018/12/01/basicCom-1X" class="sidebar-link">组件基础</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/02/stateCom-1X" class="sidebar-link">State</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/03/dataCom" class="sidebar-link">数据</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/30/events" class="sidebar-link">事件</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/lifeCom" class="sidebar-link">生命周期</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/04/permissionCom-1X" class="sidebar-link">组件权限</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/05/aleCom-1X" class="sidebar-link">Ale组件对象</a>
+    <h3>模板引擎</h3>
+    <a href="/2018/11/28/alen" class="sidebar-link">Alen</a>
+    <div class="sidebar-br"></div>
+</div>
+
+
+<div id="v03" style="display: none">
+    <h3>基础</h3>
+    <a href="/2018/11/26/installation" class="sidebar-link">安装</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/27/introduction" class="sidebar-link">介绍</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/28/otherFun" class="sidebar-link">杂项属性</a>
+    <h3>深入组件</h3>
+    <a href="/2018/11/29/basicCom" class="sidebar-link">组件基础</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/30/events" class="sidebar-link">事件</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/11/30/stateCom" class="sidebar-link">State</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/lifeCom" class="sidebar-link">生命周期</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/02/permissionCom" class="sidebar-link">组件权限</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/03/aleCom" class="sidebar-link">Ale组件对象</a>
+    <h3>模板引擎</h3>
+    <a href="/2018/11/28/alen" class="sidebar-link">Alen</a>
+    <div class="sidebar-br"></div>
+</div>
+
+
+<script>
+    document.querySelector("#select-version").onchange = function() {
+        switch(document.querySelector("#select-version").value){
+            case "1.X":
+                document.querySelector("#v1X").style.display = "block";
+                document.querySelector("#v03").style.display = "none";
+                break;
+            case "0.3":
+                document.querySelector("#v1X").style.display = "none";
+                document.querySelector("#v03").style.display = "block";
+                break;
+        }
+    }
+</script>
+
         </div>
     </div>
     <div class="app-body">

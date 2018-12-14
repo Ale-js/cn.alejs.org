@@ -215,17 +215,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var aleCom = Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    el: &quot;#app&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>之后，你可以用你的接收变量来使用任何 <code>Ale组件对象</code> 提供的操作，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aleCom.nextState();</span><br></pre></td></tr></table></figure>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>以下未全部 <code>Ale组件对象</code> 支持的操作：</p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>以下为全部 <code>Ale组件对象</code> 拥有的操作和属性：<strong>（请注意，后缀加小括号的为函数，不加的为值）</strong></p>
 <ul>
+<li>el【此组件包括的元素list】</li>
+<li>template【此组件模板】</li>
 <li>nowState 【当前state】</li>
 <li>destroy() 【销毁此 Ale组件对象，同时在真实DOM里销毁全部此组件】</li>
 <li>changeState() 【改变一个状态，接收一个 object 类型的参数，不会影响 nowState】</li>
-<li>nextState() 【进入下一个状态】</li>
-<li>backState() 【返回上一个状态】</li>
-<li>addState() 【增加一个或多个状态，接收一个数组】</li>
-<li>removeState() 【删除一个状态】</li>
-<li>setState() 【设置状态，接受一个数组，会覆盖当前状态，同时 nowState 的值变为 0】</li>
-<li>allState() 【返回全部状态长度】</li>
+<li>nextStates() 【进入下一个状态】</li>
+<li>backStates() 【返回上一个状态】</li>
+<li>addStates() 【增加一个或多个状态，接收一个数组】</li>
+<li>removeStates() 【删除一个状态】</li>
+<li>setStates() 【设置状态，接受一个数组，会覆盖当前状态】</li>
+<li>statesLength() 【返回全部状态长度】</li>
+<li>changeData() 【改变一个或多个数据】</li>
 </ul>
 </section>
     <!-- Tags START -->
@@ -246,7 +249,7 @@
 
 <script>
   (function () {
-    var url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+    var url = 'http://cn.alejs.org/2018/12/05/aleCom-1X/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -330,7 +333,7 @@
 <script>
   var disqus_shortname = '';
   
-  var disqus_url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+  var disqus_url = 'http://cn.alejs.org/2018/12/05/aleCom-1X/';
   
   (function(){
     var dsq = document.createElement('script');

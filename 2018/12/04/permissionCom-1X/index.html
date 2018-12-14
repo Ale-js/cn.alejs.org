@@ -10,7 +10,7 @@
   
   <title>
     
-      Ale组件对象 | Ale.js
+      组件权限 | Ale.js
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -211,22 +211,38 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Ale组件对象"><a href="#Ale组件对象" class="headerlink" title="Ale组件对象"></a>Ale组件对象</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>可能你在之前的教程里已经了解过了，在你每次 <code>use</code> 组件时，<code>Ale.js</code> 都会返回一个 <code>Ale组件对象</code>，你可以定义一个变量来接收它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var aleCom = Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    el: &quot;#app&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>之后，你可以用你的接收变量来使用任何 <code>Ale组件对象</code> 提供的操作，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aleCom.nextState();</span><br></pre></td></tr></table></figure>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>以下未全部 <code>Ale组件对象</code> 支持的操作：</p>
+    <section class="markdown-content"><h1 id="组件权限"><a href="#组件权限" class="headerlink" title="组件权限"></a>组件权限</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在组件被定义时，你可以给组件添加权限（使用一个 <code>permissions</code> 参数来添加）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Ale.define(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    template: &quot;尝试在控制台中输入 aleCom.nextStates()&quot;,</span><br><span class="line">    permissions: &#123;</span><br><span class="line">        nextStates: false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p id="app" class="demo"><br></p>
+
+<p>其中，<code>permissions</code> 参数需要的是一个 <code>Object</code> 对象，一个 <code>Ale组件对象</code> 的函数对着一个布尔值，</p>
+<p>当对值为 <code>true</code> 时，代表操作允许，当值为 <code>false</code> 时，代表操作不被允许（所有操作默认为 <code>true</code> 权限）。</p>
+<p><br></p>
+<p>以下为 <code>permissions</code> 参数支持的全部 <code>Ale组件对象</code> 的函数名称：</p>
 <ul>
-<li>nowState 【当前state】</li>
-<li>destroy() 【销毁此 Ale组件对象，同时在真实DOM里销毁全部此组件】</li>
-<li>changeState() 【改变一个状态，接收一个 object 类型的参数，不会影响 nowState】</li>
-<li>nextState() 【进入下一个状态】</li>
-<li>backState() 【返回上一个状态】</li>
-<li>addState() 【增加一个或多个状态，接收一个数组】</li>
-<li>removeState() 【删除一个状态】</li>
-<li>setState() 【设置状态，接受一个数组，会覆盖当前状态，同时 nowState 的值变为 0】</li>
-<li>allState() 【返回全部状态长度】</li>
+<li>changeState</li>
+<li>nextStates</li>
+<li>addStates</li>
+<li>removeStates</li>
+<li>setStates</li>
+<li>backStates</li>
+<li>changeData</li>
 </ul>
+<script src="/js/Ale.min1X.js"></script>
+<script>
+Ale.define({
+    name: "test",
+    template: "尝试在控制台中输入 aleCom.nextStates()",
+    permissions: {
+        nextStates: false
+    }
+})
+
+var aleCom = Ale.use({
+    name: "test",
+    el: "#app"
+})
+</script>
 </section>
     <!-- Tags START -->
     
@@ -246,7 +262,7 @@
 
 <script>
   (function () {
-    var url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+    var url = 'http://cn.alejs.org/2018/12/04/permissionCom-1X/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -302,7 +318,7 @@
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Ale组件对象",
+        id: "组件权限",
         owner: "",
         repo: "",
         oauth: {
@@ -330,7 +346,7 @@
 <script>
   var disqus_shortname = '';
   
-  var disqus_url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+  var disqus_url = 'http://cn.alejs.org/2018/12/04/permissionCom-1X/';
   
   (function(){
     var dsq = document.createElement('script');

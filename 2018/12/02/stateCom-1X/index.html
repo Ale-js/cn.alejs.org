@@ -10,7 +10,7 @@
   
   <title>
     
-      Ale组件对象 | Ale.js
+      State | Ale.js
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -211,22 +211,59 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Ale组件对象"><a href="#Ale组件对象" class="headerlink" title="Ale组件对象"></a>Ale组件对象</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>可能你在之前的教程里已经了解过了，在你每次 <code>use</code> 组件时，<code>Ale.js</code> 都会返回一个 <code>Ale组件对象</code>，你可以定义一个变量来接收它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var aleCom = Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    el: &quot;#app&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>之后，你可以用你的接收变量来使用任何 <code>Ale组件对象</code> 提供的操作，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aleCom.nextState();</span><br></pre></td></tr></table></figure>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>以下未全部 <code>Ale组件对象</code> 支持的操作：</p>
+    <section class="markdown-content"><h1 id="State"><a href="#State" class="headerlink" title="State"></a>State</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>State（状态）是增强组件灵活性的最重要的手段，简单来说，每一种参数都是一个状态，例如：（反过来说，如果一个组件不需要参数，那么它也不需要状态）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/* 一种状态 */</span><br><span class="line">&#123;</span><br><span class="line">    str: &quot;Hello&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 第二种状态 */</span><br><span class="line">&#123;</span><br><span class="line">    str: &quot;OK&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 第三种状态 */</span><br><span class="line">&#123;</span><br><span class="line">    str: &quot;World&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>状态可以在组件定义时被添加（添加一个参数<code>states</code>），也可以在 <code>use</code> 之后动态添加，且一个组件可以有多个状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 在定义时添加 */</span><br><span class="line">Ale.define(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    template: &quot;Hello &#123;&#123;=$name$&#125;&#125;&quot;,</span><br><span class="line">    states: [&#123; /* 注意！这里是数组！ */</span><br><span class="line">        name: &quot;Ale.js&quot;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        name: &quot;Ale.js!!!!&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 也可以在 use 之后动态添加（会覆盖定义时指定的值） */</span><br><span class="line">var app = Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    el: &quot;#app&quot;,</span><br><span class="line">    states: [&#123; /* 注意！这里是数组！ */</span><br><span class="line">        name: &quot;Ale.js&quot;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        name: &quot;Ale.js!!!!&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>完成之后：</p>
+<p id="app" class="demo"></p>
+
+<p>此时我们来测试一下组件的状态是否添加完毕了，要怎么测试呢，只需要在控制台（就在这个页面打开）中输入 <code>app.nextStates()</code>，你就会发现上方实例的值变化了。</p>
+<p>当然，有 next 就有 back，现在让我们输入 <code>app.backStates()</code>，让组件的状态回去吧！</p>
+<p><br></p>
+<p>这时，你可能会想，我们并没有指定默认状态是哪个状态，那么 <code>Ale.js</code> 是怎么区分的呢？</p>
+<p><br></p>
+<p>实际上，当你定义或使用一个组件时，有一个参数可以指定具体的默认状态，它就是<code>defaultState</code>参数。</p>
+<p><code>defaultState</code>参数的默认值为0，而 <code>0</code> 就相当于第一个状态（因为数组从0开始），所以你会发现上一个实例可以正常工作，如果我们手动在定义组件或使用组件时指定<code>defaultState</code>参数的值，那么这个组件的默认状态就会发生改变：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/* 在定义时指定 */</span><br><span class="line">Ale.define(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    template: &quot;Hello &#123;&#123;=$name$&#125;&#125;&quot;,</span><br><span class="line">    states: [&#123; /* 注意！这里是数组！ */</span><br><span class="line">        name: &quot;Ale.js&quot;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        name: &quot;Ale.js!!!!&quot;</span><br><span class="line">    &#125;],</span><br><span class="line">    defaultState: 1</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/* 也可以在 use 之后动态指定（会覆盖定义时指定的值） */</span><br><span class="line">var app = Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    el: &quot;#app&quot;,</span><br><span class="line">    states: [&#123; /* 注意！这里是数组！ */</span><br><span class="line">        name: &quot;Ale.js&quot;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        name: &quot;Ale.js!!!!&quot;</span><br><span class="line">    &#125;],</span><br><span class="line">    defaultState: 1</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p id="app2" class="demo"></p>
+
+<h3 id="函数列表"><a href="#函数列表" class="headerlink" title="函数列表"></a>函数列表</h3><p>以下列表为 <code>Ale组件对象</code> 内置的全部和 <code>State</code> 有关的函数或属性：</p>
 <ul>
-<li>nowState 【当前state】</li>
-<li>destroy() 【销毁此 Ale组件对象，同时在真实DOM里销毁全部此组件】</li>
-<li>changeState() 【改变一个状态，接收一个 object 类型的参数，不会影响 nowState】</li>
-<li>nextState() 【进入下一个状态】</li>
-<li>backState() 【返回上一个状态】</li>
-<li>addState() 【增加一个或多个状态，接收一个数组】</li>
-<li>removeState() 【删除一个状态】</li>
-<li>setState() 【设置状态，接受一个数组，会覆盖当前状态，同时 nowState 的值变为 0】</li>
-<li>allState() 【返回全部状态长度】</li>
+<li>nextStates(steps) 【前进一个状态】<strong>（可以指定一个参数，用来前进多少步）</strong></li>
+<li>backStates(steps) 【后退一个状态】<strong>（可以指定一个参数，用来后退多少步）</strong></li>
+<li>changeState(obj) 【改变一个状态，需要一个object类型的参数】</li>
+<li>addStates(arr) 【增加一个或多个状态，需要一个array类型的参数】</li>
+<li>removeStates(steps) 【删除一个或多个状态】<strong>（可以指定一个参数，用来删除多少步）</strong></li>
+<li>setStates(arr) 【设置状态，需要一个array类型的参数】</li>
+<li>statesLength() 【返回组件有多少个状态】</li>
 </ul>
+<script src="/js/Ale.min1X.js"></script>
+<script>
+Ale.define({
+    name: "test",
+    template: "Hello \{\{\=\$name\$\}\}",
+    states: [{
+        name: "Ale.js"
+    }, {
+        name: "Ale.js!!!!"
+    }]
+})
+
+var app = Ale.use({
+    name: "test",
+    el: "#app"
+})
+
+var app = Ale.use({
+    name: "test",
+    el: "#app2",
+    defaultState: 1
+})
+</script>
 </section>
     <!-- Tags START -->
     
@@ -246,7 +283,7 @@
 
 <script>
   (function () {
-    var url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+    var url = 'http://cn.alejs.org/2018/12/02/stateCom-1X/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -302,7 +339,7 @@
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Ale组件对象",
+        id: "State",
         owner: "",
         repo: "",
         oauth: {
@@ -330,7 +367,7 @@
 <script>
   var disqus_shortname = '';
   
-  var disqus_url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+  var disqus_url = 'http://cn.alejs.org/2018/12/02/stateCom-1X/';
   
   (function(){
     var dsq = document.createElement('script');

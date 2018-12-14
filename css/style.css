@@ -124,6 +124,9 @@ pre {
 .index-app-main {
   margin: auto !important;
 }
+.bar {
+  background: #0060df !important;
+}
 #index-title-box {
   margin: auto;
   height: 230px;

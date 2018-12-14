@@ -10,7 +10,7 @@
   
   <title>
     
-      Ale组件对象 | Ale.js
+      组件基础 | Ale.js
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -211,22 +211,51 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Ale组件对象"><a href="#Ale组件对象" class="headerlink" title="Ale组件对象"></a>Ale组件对象</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>可能你在之前的教程里已经了解过了，在你每次 <code>use</code> 组件时，<code>Ale.js</code> 都会返回一个 <code>Ale组件对象</code>，你可以定义一个变量来接收它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var aleCom = Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    el: &quot;#app&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>之后，你可以用你的接收变量来使用任何 <code>Ale组件对象</code> 提供的操作，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aleCom.nextState();</span><br></pre></td></tr></table></figure>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>以下未全部 <code>Ale组件对象</code> 支持的操作：</p>
-<ul>
-<li>nowState 【当前state】</li>
-<li>destroy() 【销毁此 Ale组件对象，同时在真实DOM里销毁全部此组件】</li>
-<li>changeState() 【改变一个状态，接收一个 object 类型的参数，不会影响 nowState】</li>
-<li>nextState() 【进入下一个状态】</li>
-<li>backState() 【返回上一个状态】</li>
-<li>addState() 【增加一个或多个状态，接收一个数组】</li>
-<li>removeState() 【删除一个状态】</li>
-<li>setState() 【设置状态，接受一个数组，会覆盖当前状态，同时 nowState 的值变为 0】</li>
-<li>allState() 【返回全部状态长度】</li>
-</ul>
+    <section class="markdown-content"><h1 id="组件基础"><a href="#组件基础" class="headerlink" title="组件基础"></a>组件基础</h1><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>你可以使用 <code>Ale.define</code> 函数来定义一个组件，最基础的组件至少要有两个参数（name和template）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 定义一个test组件 */</span><br><span class="line">Ale.define(&#123;</span><br><span class="line">    name: &quot;test&quot;, /* 组件名称 */</span><br><span class="line">    template: &quot;Hello World&quot; /* 组件模板 */</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>之后我们使用 <code>Ale.use</code> 函数使用一个组件，注意 <code>name</code> 要一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Ale.use(&#123;</span><br><span class="line">    name: &quot;test&quot;, /* 组件名称 */</span><br><span class="line">    el: &quot;#app&quot; /* 目标元素 */</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>之后我们就可以看到这个组件已经被渲染出来了：</p>
+<p id="app" class="demo"></p>
+
+<p class="info-box">注意！在组件每次渲染时，目标元素里的innerHTML属性都将被清空！所以请不要将一个有着其他信息的 DOM 元素作为组件的目标元素！</p>
+
+<p>当然，你还可以在 <code>template</code> 参数里面写上 <code>Alen</code> 的模板语法，具体模板语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; &#125;&#125; 执行一段js代码，不输出（双大括号内支持空格）</span><br><span class="line">&#123;&#123;= &#125;&#125; 执行一段js代码，并输出（双大括号内支持空格，但是请不要在 = 号前方空格！否则只会执行，不会输出）【不转义HTML】</span><br><span class="line">&#123;&#123;=! &#125;&#125; 执行一段js代码，并输出（双大括号内支持空格，但是请不要在 = 号前方空格！否则只会执行，不会输出）【转义HTML】</span><br><span class="line"></span><br><span class="line">在 模板 里，你需要使用一对 $ 来包裹在 data 里定义的变量名：</span><br><span class="line">&#123;&#123;=$var$&#125;&#125;</span><br><span class="line"></span><br><span class="line">如果你是在模板里定义的变量，则不需要一对 $</span><br><span class="line">&#123;&#123;var var1 = &quot;Hello&quot;; alert(var1)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Ale.define(&#123;</span><br><span class="line">    name: &quot;test2&quot;, /* 组件名称 */</span><br><span class="line">    template: &quot;Hello &#123;&#123;=$name$&#125;&#125;&quot; /* 组件模板 */</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当然，如果你只在 <code>template</code> 参数里面写上模板语法的话，将没有任何效果，所以我们还需要添加一个叫 <code>states</code> 的参数：（了解具体<code>states</code>参数，请访问之后的教程）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Ale.define(&#123;</span><br><span class="line">    name: &quot;test2&quot;, /* 组件名称 */</span><br><span class="line">    template: &quot;Hello &#123;&#123;=$name$&#125;&#125;&quot;, /* 组件模板 */</span><br><span class="line">    states: [&#123; /* 定义状态 */</span><br><span class="line">        name: &quot;Ale.js&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p id="app2" class="demo"></p>
+
+<p>每当你 <code>use</code> 一个组件时，use函数都会返回一个 <code>Ale组件对象</code>，你可以定义一个变量来接受它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var aleCom = Ale.use(&#123;</span><br><span class="line">    name: &quot;test2&quot;,</span><br><span class="line">    el: &quot;#app3&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>具体 <code>Ale组件对象</code> 有什么用，请参考之后的教程。</p>
+<h3 id="Ready"><a href="#Ready" class="headerlink" title="Ready?"></a>Ready?</h3><p>准备好了吗？你已经了解了组件的最基本的一些技能，现在请继续往下阅读吧！</p>
+<script src="/js/Ale.min1X.js"></script>
+<script>
+Ale.define({
+    name: "test",
+    template: "Hello World"
+})
+Ale.use({
+    name: "test",
+    el: "#app"
+})
+
+Ale.define({
+    name: "test2",
+    template: "Hello \{\{\=\$name\$\}\}",
+    states: [{
+        name: "Ale.js"
+    }]
+})
+Ale.use({
+    name: "test2",
+    el: "#app2"
+})
+</script>
 </section>
     <!-- Tags START -->
     
@@ -246,7 +275,7 @@
 
 <script>
   (function () {
-    var url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+    var url = 'http://cn.alejs.org/2018/12/01/basicCom-1X/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -302,7 +331,7 @@
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Ale组件对象",
+        id: "组件基础",
         owner: "",
         repo: "",
         oauth: {
@@ -330,7 +359,7 @@
 <script>
   var disqus_shortname = '';
   
-  var disqus_url = 'http://cn.alejs.org/2018/12/03/aleCom/';
+  var disqus_url = 'http://cn.alejs.org/2018/12/01/basicCom-1X/';
   
   (function(){
     var dsq = document.createElement('script');
