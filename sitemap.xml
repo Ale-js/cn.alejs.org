@@ -2,107 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/05/aleCom-1X/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentDebug/</loc>
     
-    <lastmod>2018-12-13T11:39:28.013Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/04/permissionCom-1X/</loc>
-    
-    <lastmod>2018-12-13T06:55:13.733Z</lastmod>
+    <lastmod>2018-12-22T13:59:00.986Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/11/30/events/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentImport/</loc>
     
-    <lastmod>2018-12-13T06:49:31.914Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/lifeCom/</loc>
-    
-    <lastmod>2018-12-13T06:46:55.967Z</lastmod>
+    <lastmod>2018-12-22T13:24:43.441Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/11/27/introduction/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentObj/</loc>
     
-    <lastmod>2018-12-13T06:28:05.526Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/03/dataCom/</loc>
-    
-    <lastmod>2018-12-13T06:17:19.571Z</lastmod>
+    <lastmod>2018-12-22T13:05:55.097Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/02/stateCom-1X/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/Introduction/</loc>
     
-    <lastmod>2018-12-13T05:44:03.476Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/11/28/otherFun/</loc>
-    
-    <lastmod>2018-12-13T02:31:50.282Z</lastmod>
+    <lastmod>2018-12-22T09:57:38.667Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/01/basicCom-1X/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/Comparison/</loc>
     
-    <lastmod>2018-12-13T02:31:12.854Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/11/26/installation/</loc>
-    
-    <lastmod>2018-12-13T01:55:41.910Z</lastmod>
+    <lastmod>2018-12-22T09:56:13.852Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/02/permissionCom/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/deepInRespond/</loc>
     
-    <lastmod>2018-12-10T06:12:17.683Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/11/29/basicCom/</loc>
-    
-    <lastmod>2018-12-10T04:24:47.846Z</lastmod>
+    <lastmod>2018-12-21T08:49:24.802Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/03/aleCom/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentMethod/</loc>
     
-    <lastmod>2018-12-10T03:42:51.040Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/11/30/stateCom/</loc>
-    
-    <lastmod>2018-12-10T03:05:15.120Z</lastmod>
+    <lastmod>2018-12-21T01:27:36.013Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/11/28/alen/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentData/</loc>
     
-    <lastmod>2018-12-09T03:28:32.931Z</lastmod>
+    <lastmod>2018-12-20T23:56:23.883Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentLife/</loc>
+    
+    <lastmod>2018-12-20T12:30:21.544Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/plugin/</loc>
+    
+    <lastmod>2018-12-20T02:32:00.475Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/version/</loc>
+    
+    <lastmod>2018-12-20T02:20:11.453Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/filter/</loc>
+    
+    <lastmod>2018-12-20T02:16:26.639Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/config/</loc>
+    
+    <lastmod>2018-12-20T01:37:05.281Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentFoundation/</loc>
+    
+    <lastmod>2018-12-19T10:21:12.340Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/Install/</loc>
+    
+    <lastmod>2018-12-19T07:18:40.378Z</lastmod>
     
   </url>
   

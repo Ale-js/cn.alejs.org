@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="The creator of Ale.js.">
+  <meta name="keyword" content="">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      介绍 | Ale.js
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script>
+      if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+            alert("Mobile website is not open yet, browsing with mobile phone may cause a style error!");
+        }
+  </script>
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Ale.js</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/guide/" class="item-link">教程</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="http://www.alejs.org" class="item-link">English</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/guide/" class="menu-link">教程</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="http://www.alejs.org" class="menu-link">English</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div class="app-sidebar">
+    <div class="app-sidebar-inner">
+        <h2>教程</h2>
+<select id="select-version" style="outline: none;">
+    <option selected value="1.X">1.0-Beta.1+</option>
+</select>
+
+
+<div id="v1X">
+    <h3>基础</h3>
+    <a href="/2018/12/01/Introduction" class="sidebar-link">介绍</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/Install" class="sidebar-link">安装</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentFoundation" class="sidebar-link">组件基础</a>
+    <h3>深入组件</h3>
+    <a href="/2018/12/01/ComponentObj" class="sidebar-link">组件对象</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentData" class="sidebar-link">Data</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentLife" class="sidebar-link">生命周期</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentMethod" class="sidebar-link">Method</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentImport" class="sidebar-link">复合组件</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentDebug" class="sidebar-link">调试模式</a>
+    <h3>扩展</h3>
+    <a href="/2018/12/01/plugin" class="sidebar-link">插件</a>
+    <h3>高级</h3>
+    <a href="/2018/12/01/version" class="sidebar-link">版本</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/config" class="sidebar-link">配置</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/filter" class="sidebar-link">过滤器</a>
+    <h3>内在</h3>
+    <a href="/2018/12/01/deepInRespond" class="sidebar-link">深入响应式原理</a>
+    <h3>更多</h3>
+    <a href="/2018/12/01/Comparison" class="sidebar-link">对比其他框架</a>
+</div>
+
+<script>
+    document.querySelector("#select-version").onchange = function() {
+        switch(document.querySelector("#select-version").value){
+            case "1.X":
+                document.querySelector("#v1X").style.display = "block";
+                break;
+        }
+    }
+</script>
+
+    </div>
+</div>
+<main class="app-body flex-box guide-main">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="Ale-js是什么"><a href="#Ale-js是什么" class="headerlink" title="Ale.js是什么"></a>Ale.js是什么</h2><p>Ale (中文：啤酒) 是一套用于以组件的形式构建用户界面的渐进式框架。它信奉，万物皆组件。与其它大型框架不同的是，Ale 只需要你将关注点放在数据上，并不需要关心任何与视图有关的内容。当你更新数据时，视图中任何使用到它的地方都会得到更新。</p>
+<p><br></p>
+<p>我们将 <code>Vue</code> 和 <code>React</code> 的一些特性融合在 <code>Ale</code> 中，使之更加便捷、轻量。同时，<code>diff</code> 算法在 Ale 中也有应用（得益于 Ale 自研的 diff 算法，只有大约50行，极其轻量）。</p>
+<p><br></p>
+<p>同时，在 Ale 中，你也根本无需操心任何有关于 <strong>性能</strong> 方面的事情，因为 Ale 经过压缩后（非g-zip）只有大约7kb大小，执行速度也分别接近 Vue 和 React 的 <strong>3</strong> 倍！</p>
+<p><br></p>
+<p>如果你已经是有经验的前端开发者，想知道 Ale 与其它库 / 框架有哪些具体区别，请查看 <a href="/2018/12/01/Comparison">对比其它框架</a>。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p class="info-box">我们的官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意 —— 掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。<br></p>
+
+<p>使用 Ale 最简单的例子就是制作一个 <code>HelloWorld</code> 页面，让我们先创建一个 <code>.html</code> 文件，然后通过如下方式引入 Ale：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 开发环境版本 --&gt;</span><br><span class="line">&lt;script src=&quot;ale.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 生产环境版本，压缩了代码 --&gt;</span><br><span class="line">&lt;script src=&quot;ale.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>安装教程给出了更多安装 Ale 的方式，如果你想要了解更多关于 Ale 的安装方式，请访问 <a href="/2018/12/01/Install">安装教程</a></p>
+<h3 id="第一个组件"><a href="#第一个组件" class="headerlink" title="第一个组件"></a>第一个组件</h3><p>已经引入好了 Ale 核心库文件？让我们开始制作我们的第一个组件吧！</p>
+<p>在 Ale 中，所有的组件都是通过 <code>Ale</code> 函数创建的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ale(); //当你引入了 Ale 核心库之后，Ale将会被注册为全局函数</span><br></pre></td></tr></table></figure>
+<p><code>Ale</code> 函数接收<code>2</code>个参数，第一个参数用来设置这个组件的名称（字符串），第二个参数用来配置一些默认的参数（对象）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//定义一个名为 com1 的组件</span><br><span class="line">Ale(&quot;com1&quot;, &#123;</span><br><span class="line">    //配置</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当然，单纯这样还不能创建出一个最基本的组件，一个最基本的组件至少要在配置里添加一个叫 <code>template</code> 的参数，用来设置该组件的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//定义一个名为 com1 的组件</span><br><span class="line">Ale(&quot;com1&quot;, &#123;</span><br><span class="line">    /* 配置模板为HelloWorld */</span><br><span class="line">    template: &quot;HelloWorld&quot;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>至此，最基本的组件就定义完成了！</p>
+<p>但是如果我们单纯只定义组件，而没有渲染它，那么这个组件将没有任何效果。这时我们可以使用 <code>Ale.render</code> 函数来渲染一个组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ale.render(); //渲染组件函数</span><br></pre></td></tr></table></figure>
+<p><code>Ale.render</code> 函数也同样接收<code>2</code>个参数，和<code>Ale</code>函数一样，第一个参数用来设置这个组件的名称（字符串），第二个参数用来配置一些默认的参数（对象）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ale.render(&quot;com1&quot;, &#123;</span><br><span class="line">    el: &quot;#app&quot; /* 渲染一个组件时必须添加el属性，用来选中元素 */</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其中<code>id</code>为<code>app</code>的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&apos;app&apos;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>其中，每次渲染组件时都至少要添加一个配置参数，那就是 - <code>el</code>，用来设置需要选中的元素。这时，打开我们的<code>html</code>文件，你会发现组件渲染完成了：</p>
+<p class="demo" id="app"></p>
+
+<h3 id="准备好了吗"><a href="#准备好了吗" class="headerlink" title="准备好了吗"></a>准备好了吗</h3><p>恭喜，现在你已经创建完成了自己的第一个 <code>Ale</code> 组件！而我们的教程才刚刚开始 —— 本教程的其余部分将涵盖其它高级功能更详细的细节，所以请务必读完整个教程！</p>
+<script src="../../../../js/ale.min.js"></script>
+<script>
+    //定义一个名为 com1 的组件
+    Ale("com1", {
+        template: "HelloWorld"
+    })
+    Ale.render("com1", {
+        el: "#app"
+    })
+</script>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+    <br>
+    <div id="guide-findBug">
+        找到了一些错误？<a href="https://github.com/Ale-js/cn.alejs.org">在Github上编辑！</a>
+    </div>
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://cn.alejs.org/2018/12/01/Introduction/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "介绍",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'http://cn.alejs.org/2018/12/01/Introduction/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+    <p class="copyright">
+        &copy;
+        2018 | Released under the MIT License
+        <br>
+        Create by <a href="https://github.com/17310415421">Bill Dong</a>
+    </p>
+</footer>
+
+<script>
+    function async (u, c) {
+        var d = document,
+            t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function(e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<script>
+    async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function() {
+        FastClick.attach(document.body);
+    })
+</script>
+
+<script>
+    var hasLine = 'true';
+    async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function() {
+        $('figure pre').each(function(i, block) {
+            var figure = $(this).parents('figure');
+            if (hasLine === 'false') {
+                figure.find('.gutter').hide();
+            }
+            var lang = figure.attr('class').split(' ')[1] || 'code';
+            var codeHtml = $(this).html();
+            var codeTag = document.createElement('code');
+            codeTag.className = lang;
+            codeTag.innerHTML = codeHtml;
+            $(this).attr('class', '').empty().html(codeTag);
+            figure.attr('data-lang', lang.toUpperCase());
+            hljs.highlightBlock(block);
+        });
+    })
+</script>
+
+<script>
+    function GetUrlRelativePath() {
+        var url = document.location.toString();
+        var arrUrl = url.split("//");
+
+        var start = arrUrl[1].indexOf("/");
+        var relUrl = arrUrl[1].substring(start); //stop省略，截取从start开始到结尾的所有字符
+
+        if (relUrl.indexOf("?") != -1) {
+            relUrl = relUrl.split("?")[0];
+        }
+        return relUrl;
+    }
+    if(GetUrlRelativePath() === "/" || GetUrlRelativePath() === "/guide/" || GetUrlRelativePath().substr(0,6) === "/2018/" || GetUrlRelativePath().substr(0,6) === "/2019/"){
+        $(".app-footer").remove();
+    }
+</script>
+
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

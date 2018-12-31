@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="The creator of Ale.js.">
+  <meta name="keyword" content="">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      对比其他框架 | Ale.js
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script>
+      if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+            alert("Mobile website is not open yet, browsing with mobile phone may cause a style error!");
+        }
+  </script>
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Ale.js</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/guide/" class="item-link">教程</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="http://www.alejs.org" class="item-link">English</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/guide/" class="menu-link">教程</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="http://www.alejs.org" class="menu-link">English</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div class="app-sidebar">
+    <div class="app-sidebar-inner">
+        <h2>教程</h2>
+<select id="select-version" style="outline: none;">
+    <option selected value="1.X">1.0-Beta.1+</option>
+</select>
+
+
+<div id="v1X">
+    <h3>基础</h3>
+    <a href="/2018/12/01/Introduction" class="sidebar-link">介绍</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/Install" class="sidebar-link">安装</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentFoundation" class="sidebar-link">组件基础</a>
+    <h3>深入组件</h3>
+    <a href="/2018/12/01/ComponentObj" class="sidebar-link">组件对象</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentData" class="sidebar-link">Data</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentLife" class="sidebar-link">生命周期</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentMethod" class="sidebar-link">Method</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentImport" class="sidebar-link">复合组件</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/ComponentDebug" class="sidebar-link">调试模式</a>
+    <h3>扩展</h3>
+    <a href="/2018/12/01/plugin" class="sidebar-link">插件</a>
+    <h3>高级</h3>
+    <a href="/2018/12/01/version" class="sidebar-link">版本</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/config" class="sidebar-link">配置</a>
+    <div class="sidebar-br"></div>
+    <a href="/2018/12/01/filter" class="sidebar-link">过滤器</a>
+    <h3>内在</h3>
+    <a href="/2018/12/01/deepInRespond" class="sidebar-link">深入响应式原理</a>
+    <h3>更多</h3>
+    <a href="/2018/12/01/Comparison" class="sidebar-link">对比其他框架</a>
+</div>
+
+<script>
+    document.querySelector("#select-version").onchange = function() {
+        switch(document.querySelector("#select-version").value){
+            case "1.X":
+                document.querySelector("#v1X").style.display = "block";
+                break;
+        }
+    }
+</script>
+
+    </div>
+</div>
+<main class="app-body flex-box guide-main">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="对比其他框架"><a href="#对比其他框架" class="headerlink" title="对比其他框架"></a>对比其他框架</h1><p>欢迎来到这个页面，我们相信你来这里的目的就是为了解 Ale 与其他大型框架的区别，这也正是我们想要在此回答的。</p>
+<p>客观来说，作为 Ale 的核心开发者，我们肯定会更偏爱 Ale，认为对于某些问题来讲用 Ale 解决会更好。但是在此，我们想尽可能地公平和准确地来描述一切。其他的框架也有显著的优点，例如 React 庞大的生态系统，或者像是 Angular 和 Vue 有着众多应对大型项目的解决方案。我们会尝试着把这些内容全部列出来。</p>
+<p><br></p>
+<p>我们也希望得到<strong>你</strong>的帮助，来使文档保持最新状态，因为 JavaScript 的世界进步的太快。如果你注意到一个不准确或似乎不太正确的地方，请提交问题让我们知道。</p>
+<p><br></p>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>React 和 Ale 几乎极其相似。事实上，React 就是初期 Ale 的灵感来源，它们都有：</p>
+<ul>
+<li>在状态（数据）更新时只更新必要的【使用 <strong>diff</strong> 算法】</li>
+<li>提供了 <strong>响应式</strong> 和 <strong>组件化</strong> 的视图组件。</li>
+<li>将注意力集中保持在核心库，而将其他功能交给相关的库。</li>
+</ul>
+<p>由于有着众多的相似处，我们会用更多的时间在这一块进行比较。这里我们不只保证技术内容的准确性，同时也兼顾了平衡的考量。我们需要承认 React 比 Ale 更好的地方，比如更丰富的生态系统。</p>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p>这里我们仅针对 <strong>组件定义</strong> 和 <strong>组件渲染</strong> 做了测试，所以测试结果不能代表全部性能。但是可以确定的是，Ale 在这两个方面要胜过 React：（定义一次组件并渲染1000个元素）</p>
+<ul>
+<li>Ale: 46~52 (ms)</li>
+<li>React: 307~336 (ms)</li>
+</ul>
+<p>当然，我们还做了关于响应式动态渲染的测试，结果展示 Ale 再执行动态渲染时比 React 要快 2.5 倍。</p>
+<p>造成 React 的速度这么慢的原因，当然可能是因为我们用<code>Babel</code>进行动态渲染。但是不要忘记，Ale 并不需要编译，如果提前编译好 React，这对 Ale 就有一些不公平了。</p>
+<h4 id="HTML-amp-CSS"><a href="#HTML-amp-CSS" class="headerlink" title="HTML &amp; CSS"></a>HTML &amp; CSS</h4><p>在 React 中，一切都是 JavaScript。不仅仅是 HTML 可以用 JSX 来表达，现在的潮流也越来越多地将 CSS 也纳入到 JavaScript 中来处理。这类方案有其优点，但也存在一些不是每个开发者都能接受的取舍。</p>
+<p>Ale 的整体思想是拥抱经典的 Web 技术，并在其上进行扩展。我们下面会详细分析一下。</p>
+<h5 id="JSX-vs-Templates"><a href="#JSX-vs-Templates" class="headerlink" title="JSX vs Templates"></a>JSX vs Templates</h5><p>在 React 中，所有的组件的渲染功能都依靠 JSX。JSX 是使用 XML 语法编写 JavaScript 的一种语法糖。</p>
+<p>使用 JSX 具有下面这些优势：</p>
+<ul>
+<li>你可以使用完整的编程语言 JavaScript 功能来构建你的视图页面。比如你可以使用临时变量、JS 自带的流程控制、以及直接引用当前 JS 作用域中的值等等。</li>
+<li>开发工具对 JSX 的支持相比于现有可用的其他 Ale 模板还是比较先进的 (比如，linting、类型检查、编辑器的自动完成)。</li>
+</ul>
+<p>但是事实上，Ale 也提供了渲染函数，甚至 Ale 抛弃了传统的 Mustache(JSX) 模板，选择了不是那么普及的渲染函数，这其中包括以下几个方面：</p>
+<ul>
+<li>依赖于 JavaScript 自身完整的编译器，使得我们不再需要手动编写模板渲染函数，这样做可以有效提高 Ale 模板编译的整体速度，因为渲染函数比模板引擎更加接近 JavaScript 编译器本身。</li>
+<li>当你在 JSX 模板里添加 JavaScript 表达式时，一些编译器并没有相应的语法提示。同时，在一些场景中，你真的需要 JavaScript 完全编程的能力。</li>
+</ul>
+<h4 id="规模"><a href="#规模" class="headerlink" title="规模"></a>规模</h4><h5 id="向上扩展"><a href="#向上扩展" class="headerlink" title="向上扩展"></a>向上扩展</h5><p>好吧，说句实话，Ale 真的不是针对大型应用设计的，我们设计它的初衷就是希望它能够处理几乎全部的中小型应用需求。</p>
+<p>相比之下，React 提供了强大的路由来应对大型应用。并且 React 社区在状态管理方面非常有创新精神 (比如 Flux、Redux)，这一点是 Ale 所不能比拟的。</p>
+<h5 id="向下扩展"><a href="#向下扩展" class="headerlink" title="向下扩展"></a>向下扩展</h5><p>React 学习曲线陡峭，在你开始学 React 前，你需要知道 JSX 和 ES2015，因为许多示例用的是这些语法。你需要学习构建系统，虽然你在技术上可以用 Babel 来实时编译代码，但是这并不推荐用于生产环境。</p>
+<p>不过 Ale 向下扩展后就极其类似于 jQuery。因为你只要把如下标签放到页面就可以运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;ale.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后你就可以编写 Ale 代码并应用到生产中，你只要用 min 版 Ale 文件替换掉就不用担心其他的性能问题。</p>
+<p>由于 Ale 的起步阶段不需学习任何复杂的知识点，比如 ES2015 以及 JSX，所以开发者只需不到半小时的时间阅读指南就可以立即建立简单的应用程序。</p>
+<h4 id="原生渲染"><a href="#原生渲染" class="headerlink" title="原生渲染"></a>原生渲染</h4><p>React Native 能使你用相同的组件模型编写有本地渲染能力的 APP (iOS 和 Android)。能同时跨多平台开发，对开发者是非常棒的。相比之下，Ale 在这方面就显得薄弱一些。但是我们并没有就此收手，随着 Ale 慢慢发展起来，这些构建系统会相应发布，敬请期待。</p>
+<h4 id="体积"><a href="#体积" class="headerlink" title="体积"></a>体积</h4><p>和 React 相比，Ale 显得极其轻量，Ale的压缩文件（非g-zip）【包含操作DOM的API】只有大约 <strong>8kb</strong> 大小，而 React 的核心库加 DOM 库则有着惊人的 <strong>108kb</strong>。</p>
+<h4 id="Preact-和其它类-React-库"><a href="#Preact-和其它类-React-库" class="headerlink" title="Preact 和其它类 React 库"></a>Preact 和其它类 React 库</h4><p>类 React 的库们往往尽可能地与 React 共享 API 和生态。因此上述比较对它们来说也同样适用。它们和 React 的不同往往在于更小的生态和更高的性能。但是因为这些库无法 100% 兼容 React 生态中的全部，所以部分工具和辅助库可能无法使用。或者即使看上去能工作，但也有可能随时发生不兼容，除非你用的这个类 React 库官方与 React 保持严格一致。</p>
+<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>到了对比最重要框架的时候了。之前我们说过 React 是早期 Ale 的灵感来源。事实上，Ale 的更多灵感来源于 Vue，这也是为什么 Ale 提供的部分特性和 API 都极其类似 Vue。</p>
+<p>不过，尽管 Ale 与 Vue 在某些地方有相似之处，但是我们还是推荐你同时安装 Ale 和 Vue，因为 Vue 可以使 Ale 的开发变得更加高效。不过如果你不想这么做，也可以只安装一个框架。</p>
+<h4 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h4><p>在 API 与设计两方面上 Ale.js 都比 Vue 简单得多，并且更加适合初学者学习，因此你可以快速地掌握它的全部特性并投入开发。</p>
+<h4 id="灵活性和组件化"><a href="#灵活性和组件化" class="headerlink" title="灵活性和组件化"></a>灵活性和组件化</h4><p>与 Angular 相比之下，Vue.js 是一个更加灵活开放的解决方案。但是在 Ale 中，这种情况将会发生改变。</p>
+<p>事实上，Vue 在不同组件间强制使用单向数据流，这使应用中的数据流更加清晰易懂，但是同时也限制了组件之间的灵活操作。在 Ale 中，只存在复合组件，并不存在父子组件，而复合组件中的任何组件都可以互相操作，因为它们共用一套数据。</p>
+<h4 id="性能-1"><a href="#性能-1" class="headerlink" title="性能"></a>性能</h4><p>这里我们和 React 一样，也仅针对 <strong>组件定义</strong> 和 <strong>组件渲染</strong> 做了测试，所以测试结果不能代表全部操作的性能。但是可以确定的是，Ale 在这两个方面要胜过 Vue：（定义一次组件并渲染1000个元素）</p>
+<ul>
+<li>Ale: 46~52 (ms)</li>
+<li>Vue: 181~228 (ms)</li>
+</ul>
+<h4 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h4><p>Vue 为 TS 提供了官方的 类型声明 和 组件装饰器，但并不是所有人都想用 TS。在中小型规模的项目中，引入 TS 可能并不会带来太多明显的优势。在这些情况下，用 Ale 会是更好的选择。</p>
+<h4 id="体积-1"><a href="#体积-1" class="headerlink" title="体积"></a>体积</h4><p>单独的 vue.min.js 文件体积有 <strong>88kb</strong> 大小，而 Ale 仅有大约 <strong>8kb</strong> 大小，相比 Vue 来说还算是比较轻量的。</p>
+<h4 id="学习曲线"><a href="#学习曲线" class="headerlink" title="学习曲线"></a>学习曲线</h4><p>就这点来说，两个框架都差不多，无非就是需要你具有良好的 HTML 和 JavaScript 基础。有了这些基本的技能，你就可以非常快速地通过阅读指南投入开发。</p>
+<p>但是具体来说，Vue 的 API 面积比起 Ale 要大得多，你也因此需要理解更多的概念才能开始有效率地工作。当然，Vue 本身的复杂度是因为它的设计目标就是针对大型的复杂应用。但不可否认的是，这也使得它对于经验不甚丰富的开发者相当的不友好。</p>
+<h3 id="Angular"><a href="#Angular" class="headerlink" title="Angular"></a>Angular</h3><p>当然，编者对于 Angular 的了解并不是很多，所以并不能很好地做出对比。在此，我们希望更多有经验的开发者能够帮助我们撰写对比 Angular 的文章，具体你可以点击下方 <strong>编辑页面</strong>，然后前往 Github 做出提交，感谢你的支持与理解！</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>其实之前在性能方面还有一点需要补充，因为 Vue 和 React 采用虚拟 DOM 和 diff 算法。而 Ale 实际上是直接遍历真实 DOM 树，然后采用 diff 算法对比差异，这一点类似于 Angular 的脏检查，性能会受到一些影响。不过，这种方式也免除了需要创建虚拟 DOM 树的麻烦。</p>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+    <br>
+    <div id="guide-findBug">
+        找到了一些错误？<a href="https://github.com/Ale-js/cn.alejs.org">在Github上编辑！</a>
+    </div>
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://cn.alejs.org/2018/12/01/Comparison/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "对比其他框架",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'http://cn.alejs.org/2018/12/01/Comparison/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+    <p class="copyright">
+        &copy;
+        2018 | Released under the MIT License
+        <br>
+        Create by <a href="https://github.com/17310415421">Bill Dong</a>
+    </p>
+</footer>
+
+<script>
+    function async (u, c) {
+        var d = document,
+            t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) {
+            o.addEventListener('load', function(e) {
+                c(null, e);
+            }, false);
+        }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<script>
+    async ("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function() {
+        FastClick.attach(document.body);
+    })
+</script>
+
+<script>
+    var hasLine = 'true';
+    async ("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function() {
+        $('figure pre').each(function(i, block) {
+            var figure = $(this).parents('figure');
+            if (hasLine === 'false') {
+                figure.find('.gutter').hide();
+            }
+            var lang = figure.attr('class').split(' ')[1] || 'code';
+            var codeHtml = $(this).html();
+            var codeTag = document.createElement('code');
+            codeTag.className = lang;
+            codeTag.innerHTML = codeHtml;
+            $(this).attr('class', '').empty().html(codeTag);
+            figure.attr('data-lang', lang.toUpperCase());
+            hljs.highlightBlock(block);
+        });
+    })
+</script>
+
+<script>
+    function GetUrlRelativePath() {
+        var url = document.location.toString();
+        var arrUrl = url.split("//");
+
+        var start = arrUrl[1].indexOf("/");
+        var relUrl = arrUrl[1].substring(start); //stop省略，截取从start开始到结尾的所有字符
+
+        if (relUrl.indexOf("?") != -1) {
+            relUrl = relUrl.split("?")[0];
+        }
+        return relUrl;
+    }
+    if(GetUrlRelativePath() === "/" || GetUrlRelativePath() === "/guide/" || GetUrlRelativePath().substr(0,6) === "/2018/" || GetUrlRelativePath().substr(0,6) === "/2019/"){
+        $(".app-footer").remove();
+    }
+</script>
+
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

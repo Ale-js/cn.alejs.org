@@ -183,8 +183,10 @@ pre {
   font-weight: 400;
 }
 .guide-main {
-  margin-left: 260px !important;
+  margin-left: 290px !important;
   margin-top: 70px !important;
+  padding-left: 80px !important;
+  max-width: 800px !important;
 }
 .app-sidebar {
   position: fixed;
@@ -196,7 +198,7 @@ pre {
   overflow-y: auto;
 }
 .app-sidebar-inner {
-  width: 190px;
+  width: 240px;
   padding: 20px 20px 60px 60px;
 }
 .app-body {
