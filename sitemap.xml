@@ -2,37 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/01/Install/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/version/</loc>
     
-    <lastmod>2019-01-01T09:41:19.884Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentDebug/</loc>
-    
-    <lastmod>2018-12-22T13:59:00.986Z</lastmod>
+    <lastmod>2019-01-01T11:55:28.800Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentImport/</loc>
+    <loc>http://cn.alejs.org/2018/12/01/plugin/</loc>
     
-    <lastmod>2018-12-22T13:24:43.441Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentObj/</loc>
-    
-    <lastmod>2018-12-22T13:05:55.097Z</lastmod>
+    <lastmod>2019-01-01T11:55:25.096Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://cn.alejs.org/2018/12/01/Introduction/</loc>
     
-    <lastmod>2018-12-22T09:57:38.667Z</lastmod>
+    <lastmod>2019-01-01T11:55:20.823Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/filter/</loc>
+    
+    <lastmod>2019-01-01T11:55:13.634Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentObj/</loc>
+    
+    <lastmod>2019-01-01T11:54:55.953Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentMethod/</loc>
+    
+    <lastmod>2019-01-01T11:54:51.437Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentLife/</loc>
+    
+    <lastmod>2019-01-01T11:54:42.246Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentImport/</loc>
+    
+    <lastmod>2019-01-01T11:54:36.836Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentFoundation/</loc>
+    
+    <lastmod>2019-01-01T11:54:32.837Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentDebug/</loc>
+    
+    <lastmod>2019-01-01T11:54:28.579Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/ComponentData/</loc>
+    
+    <lastmod>2019-01-01T11:54:24.371Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/2018/12/01/Install/</loc>
+    
+    <lastmod>2019-01-01T09:41:19.884Z</lastmod>
     
   </url>
   
@@ -51,58 +100,9 @@
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentMethod/</loc>
-    
-    <lastmod>2018-12-21T01:27:36.013Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentData/</loc>
-    
-    <lastmod>2018-12-20T23:56:23.883Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentLife/</loc>
-    
-    <lastmod>2018-12-20T12:30:21.544Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/plugin/</loc>
-    
-    <lastmod>2018-12-20T02:32:00.475Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/version/</loc>
-    
-    <lastmod>2018-12-20T02:20:11.453Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/filter/</loc>
-    
-    <lastmod>2018-12-20T02:16:26.639Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://cn.alejs.org/2018/12/01/config/</loc>
     
     <lastmod>2018-12-20T01:37:05.281Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/ComponentFoundation/</loc>
-    
-    <lastmod>2018-12-19T10:21:12.340Z</lastmod>
     
   </url>
   
