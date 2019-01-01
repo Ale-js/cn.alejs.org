@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://cn.alejs.org/2018/12/01/Install/</loc>
+    
+    <lastmod>2019-01-01T14:04:27.770Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://cn.alejs.org/2018/12/01/version/</loc>
     
     <lastmod>2019-01-01T11:55:28.800Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>http://cn.alejs.org/2018/12/01/ComponentData/</loc>
     
     <lastmod>2019-01-01T11:54:24.371Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/2018/12/01/Install/</loc>
-    
-    <lastmod>2019-01-01T09:41:19.884Z</lastmod>
     
   </url>
   
