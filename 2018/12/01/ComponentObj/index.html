@@ -385,9 +385,13 @@ var app = Ale.render("aleComObj", {
         }
         return relUrl;
     }
-    if(GetUrlRelativePath() === "/" || GetUrlRelativePath() === "/guide/" || GetUrlRelativePath().substr(0,6) === "/2018/" || GetUrlRelativePath().substr(0,6) === "/2019/"){
+    var thisPageURL = GetUrlRelativePath();
+    if(thisPageURL === "/" || thisPageURL === "/guide/" || thisPageURL.substr(0,6) === "/2018/" || thisPageURL.substr(0,6) === "/2019/"){
         $(".app-footer").remove();
     }
+
+    var allNAVBarEl = document.querySelectorAll('.right-list .list-item');
+    allNAVBarEl[allNAVBarEl.length - 1].children[0].setAttribute("href", "http://alejs.org" + thisPageURL)
 </script>
 
 <!-- Baidu Tongji -->
