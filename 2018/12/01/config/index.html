@@ -181,7 +181,7 @@
   <article class="post-article">
     <section class="markdown-content"><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h3 id="config-函数"><a href="#config-函数" class="headerlink" title="config 函数"></a>config 函数</h3><p>Ale 函数内置了 <code>Ale.config</code> 函数，用来更改一些 Ale 配置信息。目前 config 函数支持的配置如下：</p>
 <ul>
-<li>html <strong>（默认false）</strong>【是否不自动转义html标签（可以预防xss攻击，不要轻易打开）】</li>
+<li>html <strong>（默认false）</strong>【数据若存在HTML标签输出则为节点（关闭此选项可以预防xss攻击，不要轻易打开）】</li>
 <li>diff <strong>（默认true）</strong>【是否在操作 DOM 时应用 diff 算法（推荐小应用关闭，中大型应用需要开启）】</li>
 </ul>
 <p>你可以通过如下方式更改某一种配置：</p>
