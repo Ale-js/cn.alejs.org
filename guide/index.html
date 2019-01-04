@@ -127,47 +127,58 @@
     <main class="app-main">
     <div class="app-sidebar">
         <div class="app-sidebar-inner">
-            <h2>教程</h2>
-<select id="select-version" style="outline: none;">
-    <option selected value="1.X">1.0-Beta.1+</option>
-</select>
+            <div id="sidebar-ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-3771109326576181" data-ad-slot="2033609545"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
 
-<div id="v1X">
-    <h3>基础</h3>
-    <a href="/2018/12/01/Introduction" class="sidebar-link">介绍</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/Install" class="sidebar-link">安装</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/ComponentFoundation" class="sidebar-link">组件基础</a>
-    <h3>深入组件</h3>
-    <a href="/2018/12/01/ComponentObj" class="sidebar-link">组件对象</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/ComponentData" class="sidebar-link">Data</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/ComponentLife" class="sidebar-link">生命周期</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/ComponentMethod" class="sidebar-link">Method</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/ComponentImport" class="sidebar-link">复合组件</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/ComponentDebug" class="sidebar-link">调试模式</a>
-    <h3>扩展</h3>
-    <a href="/2018/12/01/plugin" class="sidebar-link">插件</a>
-    <h3>高级</h3>
-    <a href="/2018/12/01/version" class="sidebar-link">版本</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/config" class="sidebar-link">配置</a>
-    <div class="sidebar-br"></div>
-    <a href="/2018/12/01/filter" class="sidebar-link">过滤器</a>
-    <h3>内在</h3>
-    <a href="/2018/12/01/deepInRespond" class="sidebar-link">深入响应式原理</a>
-    <h3>更多</h3>
-    <a href="/2018/12/01/Comparison" class="sidebar-link">对比其他框架</a>
+
+<div id="sidebar-inner-tran">
+    <h2>教程</h2>
+    <select id="select-version" style="outline: none;">
+        <option selected value="1.X">1.0-Beta.1+</option>
+    </select>
+
+    <div id="v1X">
+        <h3>基础</h3>
+        <a href="/2018/12/01/Introduction" class="sidebar-link">介绍</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/Install" class="sidebar-link">安装</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/ComponentFoundation" class="sidebar-link">组件基础</a>
+        <h3>深入组件</h3>
+        <a href="/2018/12/01/ComponentObj" class="sidebar-link">组件对象</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/ComponentData" class="sidebar-link">Data</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/ComponentLife" class="sidebar-link">生命周期</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/ComponentMethod" class="sidebar-link">Method</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/ComponentImport" class="sidebar-link">复合组件</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/ComponentDebug" class="sidebar-link">调试模式</a>
+        <h3>扩展</h3>
+        <a href="/2018/12/01/plugin" class="sidebar-link">插件</a>
+        <h3>高级</h3>
+        <a href="/2018/12/01/version" class="sidebar-link">版本</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/config" class="sidebar-link">配置</a>
+        <div class="sidebar-br"></div>
+        <a href="/2018/12/01/filter" class="sidebar-link">过滤器</a>
+        <h3>内在</h3>
+        <a href="/2018/12/01/deepInRespond" class="sidebar-link">深入响应式原理</a>
+        <h3>更多</h3>
+        <a href="/2018/12/01/Comparison" class="sidebar-link">对比其他框架</a>
+    </div>
 </div>
 
 <script>
     document.querySelector("#select-version").onchange = function() {
-        switch(document.querySelector("#select-version").value){
+        switch (document.querySelector("#select-version").value) {
             case "1.X":
                 document.querySelector("#v1X").style.display = "block";
                 break;
