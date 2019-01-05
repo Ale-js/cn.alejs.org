@@ -9,7 +9,7 @@
   
   <title>
     
-      Guide | Ale.js
+      配置 | Ale.js
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -124,10 +124,9 @@
   </div>
 </header>
 
-    <main class="app-main">
     <div class="app-sidebar">
-        <div class="app-sidebar-inner">
-            <div id="sidebar-ad">
+    <div class="app-sidebar-inner">
+        <div id="sidebar-ad">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-3771109326576181" data-ad-slot="2033609545"></ins>
     <script>
@@ -186,24 +185,129 @@
     }
 </script>
 
-        </div>
     </div>
-    <div class="app-body">
-        <article class="article-card">
-            <br>
-            <h2 class="article-head">
-                欢迎!
-            </h2>
-            <h3>选择一篇教程开始学习吧!</h3>
-        </article>
+</div>
+<main class="app-body flex-box guide-main">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h3 id="config-函数"><a href="#config-函数" class="headerlink" title="config 函数"></a>config 函数</h3><p>Ale 函数内置了 <code>Ale.config</code> 函数，用来更改一些 Ale 配置信息。目前 config 函数支持的配置如下：</p>
+<ul>
+<li>html <strong>（默认false）</strong>【数据若存在HTML标签输出则为节点（关闭此选项可以预防xss攻击，不要轻易打开）】</li>
+<li>diff <strong>（默认true）</strong>【是否在操作 DOM 时应用 diff 算法（推荐小应用关闭，中大型应用需要开启）】</li>
+</ul>
+<p>你可以通过如下方式更改某一种配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Ale.config(<span class="string">"html"</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 或 */</span></span><br><span class="line"></span><br><span class="line">Ale.config(&#123;</span><br><span class="line">    html: <span class="literal">true</span>,</span><br><span class="line">    diff: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+    <br>
+    <div id="guide-findBug">
+        找到了一些错误？<a href="https://github.com/Ale-js/cn.alejs.org">在Github上编辑！</a>
     </div>
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <!-- Catalog END -->
 </main>
-<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script>
-    var el = document.querySelectorAll("pre");
-    for(var i = 0;i<el.length;i++){
-        hljs.highlightBlock(el[i]);
+  (function () {
+    var url = 'http://cn.alejs.org/guide/v1/config/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
     }
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "配置",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'http://cn.alejs.org/guide/v1/config/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
     <div class="scroll-top">
