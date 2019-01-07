@@ -190,7 +190,7 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h1><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>在 <a href="/2018/12/01/ComponentFoundation/">组件基础</a> 文章中，相信你已经了解了一些基础的添加数据的方法。如果你还没有学习过这篇教程，请完成学习后再来吧！</p>
+    <section class="markdown-content"><h1 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h1><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>在 <a href="/guide/v1/ComponentFoundation/">组件基础</a> 文章中，相信你已经了解了一些基础的添加数据的方法。如果你还没有学习过这篇教程，请完成学习后再来吧！</p>
 <p>在组件基础这篇教程里，你只学到了如何添加 <code>data</code>。那么，为什么要动态添加 <code>data</code> 呢？</p>
 <p><br></p>
 <p>其实很简单，因为模板是静态的，而数据是动态的。如果我们更改某一处数据，其实比更改模板简单得多！</p>
@@ -220,7 +220,7 @@
 <p><br></p>
 <p>可是这么做会导致你需要书写的代码量增多，而 Ale 使用深拷贝从对象根部进行扫描，并逐层创建一个全新的对象。这样做会造成一定的性能损耗（小数据量时忽略不计），但是同时也减少了你需要书写的代码量。</p>
 <p><br></p>
-<p>如果你需要多个组件共用一套数据，请尝试让一个组件在一次渲染时同时渲染多个元素，或使用 <a href="/2018/12/01/ComponentImport">复合组件</a>。</p>
+<p>如果你需要多个组件共用一套数据，请尝试让一个组件在一次渲染时同时渲染多个元素，或使用 <a href="/guide/v1/ComponentImport">复合组件</a>。</p>
 <script src="../../../../js/Ale.min.js"></script>
 <script>
 Ale("com1", {

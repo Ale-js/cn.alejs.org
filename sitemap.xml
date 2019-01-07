@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://cn.alejs.org/guide/v1/Introduction/</loc>
+    
+    <lastmod>2019-01-07T03:56:59.435Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/guide/v1/ComponentMethod/</loc>
+    
+    <lastmod>2019-01-07T03:56:31.200Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/guide/v1/ComponentFoundation/</loc>
+    
+    <lastmod>2019-01-07T03:56:01.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cn.alejs.org/guide/v1/ComponentData/</loc>
+    
+    <lastmod>2019-01-07T03:55:41.990Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://cn.alejs.org/guide/v1/version/</loc>
     
     <lastmod>2019-01-05T01:50:03.269Z</lastmod>
@@ -51,13 +79,6 @@
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/guide/v1/ComponentMethod/</loc>
-    
-    <lastmod>2019-01-05T01:49:29.662Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://cn.alejs.org/guide/v1/ComponentLife/</loc>
     
     <lastmod>2019-01-05T01:49:26.185Z</lastmod>
@@ -72,13 +93,6 @@
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/guide/v1/ComponentFoundation/</loc>
-    
-    <lastmod>2019-01-05T01:49:17.509Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://cn.alejs.org/guide/v1/ComponentDebug/</loc>
     
     <lastmod>2019-01-05T01:49:14.159Z</lastmod>
@@ -86,23 +100,9 @@
   </url>
   
   <url>
-    <loc>http://cn.alejs.org/guide/v1/ComponentData/</loc>
-    
-    <lastmod>2019-01-05T01:49:10.693Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://cn.alejs.org/guide/v1/Comparison/</loc>
     
     <lastmod>2019-01-05T01:49:06.829Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cn.alejs.org/guide/v1/Introduction/</loc>
-    
-    <lastmod>2019-01-05T01:48:35.273Z</lastmod>
     
   </url>
   

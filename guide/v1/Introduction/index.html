@@ -196,14 +196,14 @@
 <p><br></p>
 <p>同时，在 Ale 中，你也根本无需操心任何有关于 <strong>性能</strong> 方面的事情，因为 Ale 经过压缩后（非g-zip）只有大约7kb大小，执行速度也分别接近 Vue 和 React 的 <strong>3</strong> 倍！</p>
 <p><br></p>
-<p>如果你已经是有经验的前端开发者，想知道 Ale 与其它库 / 框架有哪些具体区别，请查看 <a href="/2018/12/01/Comparison">对比其它框架</a>。</p>
+<p>如果你已经是有经验的前端开发者，想知道 Ale 与其它库 / 框架有哪些具体区别，请查看 <a href="/guide/v1/Comparison">对比其它框架</a>。</p>
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p class="info-box">我们的官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意 —— 掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。<br></p>
 
 <p>使用 Ale 最简单的例子就是制作一个 <code>HelloWorld</code> 页面，让我们先创建一个 <code>.html</code> 文件，然后通过如下方式引入 Ale：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开发环境版本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ale.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>或者：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 生产环境版本，压缩了代码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ale.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>安装教程给出了更多安装 Ale 的方式，如果你想要了解更多关于 Ale 的安装方式，请访问 <a href="/2018/12/01/Install">安装教程</a></p>
+<p>安装教程给出了更多安装 Ale 的方式，如果你想要了解更多关于 Ale 的安装方式，请访问 <a href="/guide/v1/Install">安装教程</a></p>
 <h3 id="第一个组件"><a href="#第一个组件" class="headerlink" title="第一个组件"></a>第一个组件</h3><p>已经引入好了 Ale 核心库文件？让我们开始制作我们的第一个组件吧！</p>
 <p>在 Ale 中，所有的组件都是通过 <code>Ale</code> 函数创建的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ale(); <span class="comment">//当你引入了 Ale 核心库之后，Ale将会被注册为全局函数</span></span><br></pre></td></tr></table></figure>
