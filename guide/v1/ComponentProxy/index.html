@@ -9,7 +9,7 @@
   
   <title>
     
-      Method | Ale.js
+      代理 | Ale.js
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -202,61 +202,70 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><h4 id="1-0-0更新内容："><a href="#1-0-0更新内容：" class="headerlink" title="1.0.0更新内容："></a>1.0.0更新内容：</h4><p>1.0.0 版本及以后，在 <code>methods</code> 参数里的任何函数里使用 <code>this</code> 可以代指渲染之后的 ale组件对象。</p>
-<p><br></p>
-<p>同时，在 1.0.0 版本及以后，你也可以在组件渲染时动态设置或覆盖 <code>methods</code> 属性。</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>让我们接着组件 <a href="/guide/v1/ComponentLife/">生命周期</a> 的教程来讲解，还是定时器的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&lt;span&gt;Now Time: &lt;/span&gt;"</span> + <span class="keyword">this</span>.data.time</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 这里需要使用箭头函数，因为不会绑定 this */</span></span><br><span class="line">            <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        unmounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            clearInterval(<span class="keyword">this</span>.timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p></p><p class="demo" id="app">&lt;/p</p>
-<p>不知道你有没有注意到，我们的定时器直接添加在 <code>this</code> 上：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 注意这里，直接绑定到 Ale组件对象上(this) */</span></span><br><span class="line"><span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<p>可是，如果我们不小心，添加的函数与 <code>Ale组件对象</code> 里的内置函数重名了，那么将会有一些未知 BUG 出现。</p>
-<p>这时，我们推荐你将函数添加到 <code>Ale组件对象</code> 里的内置属性 <code>methods</code> 上！</p>
-<p>让我们修改一下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&lt;span&gt;Now Time: &lt;/span&gt;"</span> + <span class="keyword">this</span>.data.time</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 注意这里，绑定methods上 */</span></span><br><span class="line">            <span class="keyword">this</span>.methods.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        unmounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            clearInterval(<span class="keyword">this</span>.methods.timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>实例是可以正常执行的。</p>
-<p>同时，你也可以在组件定义时设置 <code>methods</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    template: <span class="string">"test"</span>,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="comment">/* 定义一个名为 testFn 的函数 */</span></span><br><span class="line">        testFn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"test!"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 动态调用它 */</span></span><br><span class="line">            <span class="keyword">this</span>.methods.testFn();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><p>同 <code>data</code> 属性一样，<code>methods</code> 属性也会自动绑定到组件的全部元素及子元素上，通过 <code>this.methods</code> 即可访问：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="string">"&lt;span onclick='this.methods.testFn()'&gt;Click me!&lt;/span&gt;"</span></span><br></pre></td></tr></table></figure>
-<div class="demo" id="app2"></div>
+    <section class="markdown-content"><h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理<div class="v100-add"></div></h1><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>在 1.0.0 中，我们废除了 debug 参数，增加了一个功能类似的 <code>proxy</code> 参数，只不过使用方式略有不同。</p>
+<p>其中，proxy参数里的函数都将会自动绑定动态渲染的 <code>ale组件对象</code>，请使用一个参数访问：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">proxy: &#123;</span><br><span class="line">    setter: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(obj); <span class="comment">//渲染完成后的 ale组件对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>proxy参数支持 <code>setter</code> 和 <code>getter</code> 函数，用来分别代理数据的设置和获取。你可以在组件定义时添加 <code>proxy</code>，也可以在渲染时动态添加。</p>
+<h4 id="setter"><a href="#setter" class="headerlink" title="setter"></a>setter</h4><p>setter 参数需要为一个函数，同时需要接收一个参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setter: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>obj</code> 参数内部有以下几个键值：</p>
+<ul>
+<li>type【数据的类型。normal代表普通数据，static代表静态数据】</li>
+<li>key【数据的名称】</li>
+<li>val【新设置的值】</li>
+<li>preventUpdating【函数，调用即阻止组件的视图更新，但是不阻止组件数据值的更新】</li>
+</ul>
+<p id="app" class="demo"></p>
 
+<p>同时，你需要使用 <code>return</code> 关键字返回设置的新值，否则组件数据值将被更新为 <code>undefined</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setter: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj.val;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 或者你也可以返回你自行设置的值</span></span><br><span class="line"><span class="comment">        return "就不让你更新数据！";</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，你也可以使用 <code>preventUpdating</code> 函数来阻止组件的视图更新，但是不能阻止组件数据值的更新（通过return可以阻止）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setter: function(obj)&#123;</span><br><span class="line">    obj.preventUpdating();</span><br><span class="line">    return obj.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p class="demo" id="app2"></p>
 
+<h4 id="getter"><a href="#getter" class="headerlink" title="getter"></a>getter</h4><p>同样的，getter 参数需要为一个函数，同时也需要接收一个参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getter: <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>obj</code> 参数内部也有以下几个键值：</p>
+<ul>
+<li>type【数据的类型。normal代表普通数据，static代表静态数据】</li>
+<li>key【数据的名称】</li>
+<li>val【获取的值】</li>
+<li>preventUpdating【函数，调用即阻止组件的视图更新，但是不阻止组件数据值的更新】<span style="color: red">【无效！因为getter不会造成视图更新！】</span></li>
+</ul>
 <script src="../../../../js/Ale.v1.min.js"></script>
 <script>
-Ale("timer", {
-    template: function(){
-        return "<span>Now Time: </span>" + this.data.time
+Ale('test', {
+    template: "重新设置 app.data.i 的值，你可以在控制台中看到 obj",
+    proxy: {
+        setter: function(obj){
+            console.log(obj);
+        }
     },
     data: {
-        time: new Date().toLocaleTimeString()
-    },
-    life: {
-        mounting: function(){
-            this.timer = setInterval(() => {
-                this.data.time = new Date().toLocaleTimeString();
-            }, 1000);
-        },
-        unmounting: function(){
-            clearInterval(this.timer);
-        }
+        i: 0
     }
 })
 
-Ale.render("timer", {
+var app = Ale.render("test", {
     el: "#app"
 })
 
-Ale("test", {
-    template: "<span onclick='this.methods.testFn()'>Click me!</span>",
-    methods: {
-        testFn: function(){
-            alert("test!")
+Ale('test2', {
+    template: function(){
+        return "重新设置 app2.data.i 的值，只有 app2.data.i 的值会更新，视图不会更新<br>app.data.i 在视图上的值为：" + this.data.i;
+    },
+    proxy: {
+        setter: function(obj){
+            obj.preventUpdating();
+            return obj.val;
         }
+    },
+    data: {
+        i: 0
     }
 })
 
-Ale.render("test", {
+var app2 = Ale.render("test2", {
     el: "#app2"
 })
 </script>
@@ -279,7 +288,7 @@ Ale.render("test", {
 
 <script>
   (function () {
-    var url = 'http://cn.alejs.org/guide/v1/ComponentMethod/';
+    var url = 'http://cn.alejs.org/guide/v1/ComponentProxy/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -334,7 +343,7 @@ Ale.render("test", {
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Method",
+        id: "代理",
         owner: "",
         repo: "",
         oauth: {
@@ -362,7 +371,7 @@ Ale.render("test", {
 <script>
   var disqus_shortname = '';
   
-  var disqus_url = 'http://cn.alejs.org/guide/v1/ComponentMethod/';
+  var disqus_url = 'http://cn.alejs.org/guide/v1/ComponentProxy/';
   
   (function(){
     var dsq = document.createElement('script');

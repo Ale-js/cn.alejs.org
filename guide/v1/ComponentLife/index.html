@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -198,6 +210,7 @@
 <li>rendering（组件被渲染时）</li>
 <li>updating（组件更新时）</li>
 <li>destroy（组件被销毁时）</li>
+<li>staticDataUpdating（静态数据更新时）<div class="v100-add"></div></li>
 </ul>
 <p>你可以在定义组件时添加一个名为 <code>life</code> 的属性，并在 <code>life</code> 属性里添加函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    template: <span class="string">"test"</span>,</span><br><span class="line">    life: &#123;</span><br><span class="line">        <span class="comment">/* 这里添加life属性，需要为object */</span></span><br><span class="line">        <span class="comment">/* 添加using函数，当组件被使用时触发 */</span></span><br><span class="line">        using: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"using!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -205,16 +218,16 @@
 
 <h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><p>除了 using 函数，其他的函数都将自动绑定 Ale 组件对象。如果你需要更改 data，请使用 <code>this.data</code> 这种形式更改：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    template: <span class="string">"test"</span>,</span><br><span class="line">    life: &#123;</span><br><span class="line">        <span class="comment">/* 这里添加life属性，需要为object */</span></span><br><span class="line">        <span class="comment">/* 添加rendering函数，当组件被渲染时触发 */</span></span><br><span class="line">        rendering: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.data); <span class="comment">/* 打印data */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="在线实例"><a href="#在线实例" class="headerlink" title="在线实例"></a>在线实例</h3><p>让我们来制作一个定时器，输出当前时间，每秒更新一次：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Now Time: "</span> + <span class="keyword">this</span>.time</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 这里需要使用箭头函数，因为不会绑定 this */</span></span><br><span class="line">            <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        unmounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            clearInterval(<span class="keyword">this</span>.timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="在线实例"><a href="#在线实例" class="headerlink" title="在线实例"></a>在线实例</h3><p>让我们来制作一个定时器，输出当前时间，每秒更新一次：<a href="https://jsfiddle.net/billdong/y5p327vq/1/" target="_blank" rel="noopener">在jsfiddle上查看</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Now Time: "</span> + <span class="keyword">this</span>.data.time</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 这里需要使用箭头函数，因为不会绑定 this */</span></span><br><span class="line">            <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        unmounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            clearInterval(<span class="keyword">this</span>.timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p class="demo" id="app2"></p>
 
 <p>上方定时器不会应用 Ale 内置的 <code>diff</code> 算法，因为你需要将不需要更新的元素用 DOM 标签包裹起来：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;span&gt;Now Time: &lt;/span&gt;"</span> + <span class="keyword">this</span>.time</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;span&gt;Now Time: &lt;/span&gt;"</span> + <span class="keyword">this</span>.data.time</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p class="demo" id="app3"></p>
 
 <p>现在你可以打开控制台，对比一下这两个实例 DOM 的刷新，你会发现这个实例的 <code>Now Time:</code> 并没有更新。</p>
-<script src="../../../../js/Ale.min.js"></script>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 Ale("test", {
     template: "test",
@@ -227,7 +240,7 @@ Ale("test", {
 
 Ale("timer", {
     template: function(){
-        return "Now Time: " + this.time
+        return "Now Time: " + this.data.time
     },
     data: {
         time: new Date().toLocaleTimeString()
@@ -251,7 +264,7 @@ Ale.render("timer", {
 
 Ale("timer2", {
     template: function(){
-        return "<span>Now Time: </span>" + this.time
+        return "<span>Now Time: </span>" + this.data.time
     },
     data: {
         time: new Date().toLocaleTimeString()

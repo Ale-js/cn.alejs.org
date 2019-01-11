@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -199,7 +211,7 @@
 <p>如果你已经是有经验的前端开发者，想知道 Ale 与其它库 / 框架有哪些具体区别，请查看 <a href="/guide/v1/Comparison">对比其它框架</a>。</p>
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p class="info-box">我们的官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意 —— 掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。<br></p>
 
-<p>使用 Ale 最简单的例子就是制作一个 <code>HelloWorld</code> 页面，让我们先创建一个 <code>.html</code> 文件，然后通过如下方式引入 Ale：</p>
+<p>使用 Ale 最简单的例子就是制作一个 <code>HelloWorld</code> 页面，让我们先创建一个 <code>.html</code> 文件，然后通过如下方式引入 Ale（或者你也可以 <a href="https://jsfiddle.net/billdong/Lqb8hy5z/5/" target="_blank" rel="noopener">在jsfiddle上查看</a>）：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开发环境版本 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ale.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>或者：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 生产环境版本，压缩了代码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ale.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -222,7 +234,7 @@
 <p class="demo" id="app"></p>
 
 <h3 id="准备好了吗"><a href="#准备好了吗" class="headerlink" title="准备好了吗"></a>准备好了吗</h3><p>恭喜，现在你已经创建完成了自己的第一个 <code>Ale</code> 组件！而我们的教程才刚刚开始 —— 本教程的其余部分将涵盖其它高级功能更详细的细节，所以请务必读完整个教程！</p>
-<script src="../../../../js/Ale.min.js"></script>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
     //定义一个名为 com1 的组件
     Ale("com1", {

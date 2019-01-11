@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -200,17 +212,21 @@
 <p class="demo" id="app"></p>
 
 <p>那么，将 <strong>template</strong> 属性设置为函数有什么好处呢？其实，它可以自动绑定一个叫 <code>data</code> 的属性。</p>
-<p>例如我们在 <code>data</code> 属性里定义一个名为<code>name</code>的值，然后渲染它：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span> + <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        name: <span class="string">"World"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 切记一定不可使用 ES6 的箭头函数，因为箭头函数不会绑定 this</span></span><br><span class="line"><span class="comment">Ale("com1", &#123;</span></span><br><span class="line"><span class="comment">    template: () =&gt; &#123;</span></span><br><span class="line"><span class="comment">        return "Hello " + this.name; //错误！</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    data: &#123;</span></span><br><span class="line"><span class="comment">        name: "World"</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>例如我们在 <code>data</code> 属性里定义一个名为<code>name</code>的值，然后渲染它：<br><strong>【在1.0.0版本之前，使用this代指的实际是this.data，而1.0.0版本将this改为代指渲染完成后的 ale组件对象】<em>（如果你不知道这句话是什么意思，请先不用管它）</em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span> + <span class="keyword">this</span>.data.name;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        name: <span class="string">"World"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 切记一定不可使用 ES6 的箭头函数，因为箭头函数不会绑定 this</span></span><br><span class="line"><span class="comment">Ale("com1", &#123;</span></span><br><span class="line"><span class="comment">    template: () =&gt; &#123;</span></span><br><span class="line"><span class="comment">        return "Hello " + this.data.name; //错误！</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    data: &#123;</span></span><br><span class="line"><span class="comment">        name: "World"</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <p class="demo" id="app2"></p>
 
-<h3 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h3><p>你也可以在组件被渲染时动态设置 <code>data</code>。其中，重名的属性将会被重新赋值：</p>
+<h3 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h3><h4 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h4><p>你也可以在组件被渲染时动态设置 <code>data</code>。其中，重名的属性将会被重新赋值：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ale.render(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        name: <span class="string">"Ale.js"</span> <span class="comment">/* 会被重新赋值为 Ale.js */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p class="demo" id="app3"></p>
 
 <p>当然，同一个组件也可以被渲染多次：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ale.render(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app2"</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app3"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        name: <span class="string">"Ale.js"</span> <span class="comment">/* 也可以拥有不同的属性 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<script src="../../../../js/Ale.min.js"></script>
+<h4 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件<div class="v100-add"></div></h4><p>如果你在定义组件时未添加名称，那么 <code>Ale()</code> 函数将会返回给你一个 <code>Ale局部组件生成对象</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个变量来接收 Ale局部组件生成对象 */</span></span><br><span class="line"><span class="keyword">var</span> com = Ale(&#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"HelloWorld"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>你可以使用 <code>Ale局部组件生成对象</code> 的 <code>render</code> 函数来渲染这个组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">com.render(&#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 Ale("com1", {
     template: function(){
@@ -223,7 +239,7 @@ Ale.render("com1", {
 
 Ale("com2", {
     template: function(){
-        return "Hello "+this.name;
+        return "Hello "+this.data.name;
     },
     data: {
         name: "World"

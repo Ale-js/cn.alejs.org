@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -196,16 +208,17 @@
 
 <p>让我们点击上方实例，你将会看到它在控制台中输出了它自己的<code>Ale组件对象</code>。</p>
 <h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><p>可是这造成了一个问题，如果我们的组件需要动态渲染，那我们怎么获取它的 <code>Ale组件对象</code> 呢？</p>
-<p>很简单，只需要在支持函数的属性中使用 <code>this</code> 关键字即可获取 <strong>（由于<code>template</code>属性比较特殊，自动绑定的是<code>this.data</code>，所以在template属性中使用<code>this</code>代指的是<code>this.data</code>）</strong>：</p>
+<p>很简单，只需要在支持函数的属性中使用 <code>this</code> 关键字即可获取 <strong>（1.0.0之前<code>template</code>属性自动绑定的是<code>this.data</code>，而在1.0.0版本及以后，template属性中使用<code>this</code>代指的是渲染完成后的 ale组件对象，也就是 <code>this</code>【但是你只可以访问ale组件对象的data、staticData、methods属性】）</strong>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个组件 */</span></span><br><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">/* 这里this代指渲染完成之后的Ale组件对象 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>在上方实例中，可能你还不了解<code>life</code>属性的作用，不过我们就是给你演示一下如何使用，具体细节请继续往下查看教程！</p>
 <p>目前全部支持函数的属性：</p>
 <ul>
-<li>template <strong>（由于<code>template</code>属性比较特殊，自动绑定的是<code>this.data</code>，所以在template属性中使用<code>this</code>代指的是<code>this.data</code>）</strong></li>
+<li>template <strong>（1.0.0之前<code>template</code>属性自动绑定的是<code>this.data</code>，而在1.0.0版本及以后，template属性中使用<code>this</code>代指的是渲染完成后的 ale组件对象，也就是 <code>this</code>【但是你只可以访问ale组件对象的data、staticData、methods属性】）</strong>：</li>
 <li>life <strong>（life属性本身不支持函数，但是它内部的属性全部支持函数）</strong></li>
 <li>debug <strong>（debug属性本身不支持函数，但是它内部的属性全部支持函数。<span style="color:red">不过注意，debug内部的函数<em>不会</em>绑定this</span>）</strong></li>
+<li>proxy <strong>（proxy属性本身不支持函数，但是它内部的属性全部支持函数。）</strong></li>
 </ul>
-<script src="../../../../js/Ale.min.js"></script>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 Ale("aleComObj", {
     template: "<button onclick='console.log(app)'>点我在控制台中输出我的：Ale组件对象</button>"

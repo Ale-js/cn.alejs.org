@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -196,7 +208,7 @@
 <h3 id="在线实例"><a href="#在线实例" class="headerlink" title="在线实例"></a>在线实例</h3><p id="app" class="demo"></p>
 
 <p>在上方实例中，我们添加了一个全局过滤器，它可以过滤掉所有的数字。现在你可以在控制台中输入 <code>app.data.str = &quot;新消息123&quot;</code>，看一下过滤器发挥的作用。</p>
-<script src="../../../../js/Ale.min.js"></script>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 Ale.filter(function(msg){
     return msg.replace(/0/g, "").replace(/1/g, "").replace(/2/g, "").replace(/3/g, "").replace(/4/g, "").replace(/5/g, "").replace(/6/g, "").replace(/7/g, "").replace(/8/g, "").replace(/9/g, "");
@@ -204,7 +216,7 @@ Ale.filter(function(msg){
 
 Ale("com1", {
     template: function(){
-        return this.str;
+        return this.data.str;
     }
 });
 var app = Ale.render("com1", {

@@ -9,7 +9,7 @@
   
   <title>
     
-      Method | Ale.js
+      异步队列 | Ale.js
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -202,64 +202,23 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><h4 id="1-0-0更新内容："><a href="#1-0-0更新内容：" class="headerlink" title="1.0.0更新内容："></a>1.0.0更新内容：</h4><p>1.0.0 版本及以后，在 <code>methods</code> 参数里的任何函数里使用 <code>this</code> 可以代指渲染之后的 ale组件对象。</p>
+    <section class="markdown-content"><h1 id="异步队列"><a href="#异步队列" class="headerlink" title="异步队列"></a>异步队列<p class="v100-add"></p></h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在 1.0.0 版本及以后，我们允许你使用<code>异步队列</code>更新DOM，这意味着更高的性能。</p>
+<p>例如我们有一个需要循环更新的组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.data.i;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        i: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = Ale.render(<span class="string">"test"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 这里更新10000次 */</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++)&#123;</span><br><span class="line">    app.data.i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上方实例的组件在 1.0-beta.1 版本中将会触发 <code>10000</code> 次的组件视图更新，而在 1.0.0+ 版本中，它只会更新一次，也就是最后的一次。</p>
+<h4 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a>nextTick</h4><p>但是这也就意味着我们无法使用 <code>innerHTML</code> 来获取组件里的内容，因为我们无法检测到它到底什么时候完成更新。</p>
 <p><br></p>
-<p>同时，在 1.0.0 版本及以后，你也可以在组件渲染时动态设置或覆盖 <code>methods</code> 属性。</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>让我们接着组件 <a href="/guide/v1/ComponentLife/">生命周期</a> 的教程来讲解，还是定时器的例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&lt;span&gt;Now Time: &lt;/span&gt;"</span> + <span class="keyword">this</span>.data.time</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 这里需要使用箭头函数，因为不会绑定 this */</span></span><br><span class="line">            <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        unmounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            clearInterval(<span class="keyword">this</span>.timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p></p><p class="demo" id="app">&lt;/p</p>
-<p>不知道你有没有注意到，我们的定时器直接添加在 <code>this</code> 上：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 注意这里，直接绑定到 Ale组件对象上(this) */</span></span><br><span class="line"><span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<p>可是，如果我们不小心，添加的函数与 <code>Ale组件对象</code> 里的内置函数重名了，那么将会有一些未知 BUG 出现。</p>
-<p>这时，我们推荐你将函数添加到 <code>Ale组件对象</code> 里的内置属性 <code>methods</code> 上！</p>
-<p>让我们修改一下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"timer"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&lt;span&gt;Now Time: &lt;/span&gt;"</span> + <span class="keyword">this</span>.data.time</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 注意这里，绑定methods上 */</span></span><br><span class="line">            <span class="keyword">this</span>.methods.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.data.time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">            &#125;, <span class="number">1000</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        unmounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            clearInterval(<span class="keyword">this</span>.methods.timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>实例是可以正常执行的。</p>
-<p>同时，你也可以在组件定义时设置 <code>methods</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    template: <span class="string">"test"</span>,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="comment">/* 定义一个名为 testFn 的函数 */</span></span><br><span class="line">        testFn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            alert(<span class="string">"test!"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 动态调用它 */</span></span><br><span class="line">            <span class="keyword">this</span>.methods.testFn();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><p>同 <code>data</code> 属性一样，<code>methods</code> 属性也会自动绑定到组件的全部元素及子元素上，通过 <code>this.methods</code> 即可访问：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="string">"&lt;span onclick='this.methods.testFn()'&gt;Click me!&lt;/span&gt;"</span></span><br></pre></td></tr></table></figure>
-<div class="demo" id="app2"></div>
-
-
-<script src="../../../../js/Ale.v1.min.js"></script>
-<script>
-Ale("timer", {
-    template: function(){
-        return "<span>Now Time: </span>" + this.data.time
-    },
-    data: {
-        time: new Date().toLocaleTimeString()
-    },
-    life: {
-        mounting: function(){
-            this.timer = setInterval(() => {
-                this.data.time = new Date().toLocaleTimeString();
-            }, 1000);
-        },
-        unmounting: function(){
-            clearInterval(this.timer);
-        }
-    }
-})
-
-Ale.render("timer", {
-    el: "#app"
-})
-
-Ale("test", {
-    template: "<span onclick='this.methods.testFn()'>Click me!</span>",
-    methods: {
-        testFn: function(){
-            alert("test!")
-        }
-    }
-})
-
-Ale.render("test", {
-    el: "#app2"
-})
-</script>
+<p>虽然 Ale 鼓励各位开发者沿着数据驱动的思维来思考。但是不得不承认的是，有的时候你确实需要获取组件的<code>innerHTML</code>。这时你就可以使用 <code>Ale.nextTick</code> 函数来给 Ale 的异步DOM更新队列添加一个回调函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ale.nextTick(function()&#123;</span><br><span class="line">    /* 这里添加一个回调函数作为参数 */</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这时你就可以获取组件的<code>innerHTML</code>了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ale.nextTick(function()&#123;</span><br><span class="line">    document.querySelector(&quot;#app&quot;).innerHTML;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h4><p>当你动态更新组件时，Ale 首先会检测是否异步更新队列已经被创建了。</p>
+<ul>
+<li><p>如果队列已经被创建了，那么 Ale 将会存储组件更新到一个队列中，并等待当前队列更新完成再更新。</p>
+</li>
+<li><p>如果队列没有被创建，那么 Ale 会直接创建一个更新队列以完成更新。</p>
+</li>
+</ul>
 </section>
     <!-- Tags START -->
     
@@ -279,7 +238,7 @@ Ale.render("test", {
 
 <script>
   (function () {
-    var url = 'http://cn.alejs.org/guide/v1/ComponentMethod/';
+    var url = 'http://cn.alejs.org/guide/v1/nextTick/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -334,7 +293,7 @@ Ale.render("test", {
     var gitmentConfig = "";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Method",
+        id: "异步队列",
         owner: "",
         repo: "",
         oauth: {
@@ -362,7 +321,7 @@ Ale.render("test", {
 <script>
   var disqus_shortname = '';
   
-  var disqus_url = 'http://cn.alejs.org/guide/v1/ComponentMethod/';
+  var disqus_url = 'http://cn.alejs.org/guide/v1/nextTick/';
   
   (function(){
     var dsq = document.createElement('script');

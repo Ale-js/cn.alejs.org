@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -201,8 +213,17 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">    name: <span class="string">"test"</span>, <span class="comment">/* 插件名称 */</span></span><br><span class="line">    install: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">/* 安装函数，当用户 use 插件时会调用 */</span></span><br><span class="line">        alert(<span class="string">"Hello!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>你可以在 <code>install</code> 属性里给 Ale 对象的 <code>prototype</code> 属性添加函数或属性…</p>
 <p>反正随便啦，安装函数支持任意的 JavaScript 代码！</p>
+<h4 id="plugin对象"><a href="#plugin对象" class="headerlink" title="plugin对象"></a>plugin对象<div class="v100-add"></div></h4><p>通过 <code>Ale.plugin.函数名称</code> 这种格式来调用 plugin 内部的任何内容。</p>
+<p>目前 plugin 对象内置的函数如下：</p>
+<ul>
+<li>inject() <strong>【inject函数需要一个参数，类型需要为function，用来向组件内部注入内容（每当组件被渲染时都会触发）】</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Ale.plugin.inject(<span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* 添加一个参数，obj是被注册组件渲染时的 ale组件对象 */</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<div id="app" class="demo"><button onclick="Ale.render('test', {el: '#app'})">点我渲染test组件，同时你可以在控制台中查看输出信息</button></div>
+
+
 <h3 id="在线实例"><a href="#在线实例" class="headerlink" title="在线实例"></a>在线实例</h3><p>我们已经定义了一个名为 <code>test</code> 的 Ale 插件对象，现在让我们在控制台中输入 <code>Ale.use(test)</code> 来安装它吧！（安装时会输出 Hello! ）</p>
-<script src="../../../../js/Ale.min.js"></script>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 var test = {
     name: "test",
@@ -210,6 +231,23 @@ var test = {
         alert("Hello!");
     }
 }
+
+var test2 = {
+    name: "test2",
+    install: function(){
+        Ale.plugin.inject(function(obj){
+            console.log(obj);
+        })
+    }
+}
+
+Ale.use(test2);
+
+Ale("test", {
+    template: function(){
+        return "TEST"
+    }
+})
 
 </script>
 </section>

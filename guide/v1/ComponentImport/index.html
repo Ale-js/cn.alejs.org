@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -208,10 +220,24 @@
 <ul>
 <li>整个复合组件共用一个<code>data</code>。也就是说，复合组件之间没有层级关系，任何组件都可以操作另外的所有组件里的数据。<strong>（另外，按imports导入的先后顺序，同名的数据将会覆盖之前的同名数据）</strong></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个名为test-1的组件 */</span></span><br><span class="line">Ale(<span class="string">"test-1"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.h; <span class="comment">/* 这里访问了test组件的数据 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个名为test-2的组件 */</span></span><br><span class="line">Ale(<span class="string">"test-2"</span>, &#123;</span><br><span class="line">    imports: [<span class="string">"test-1"</span>],</span><br><span class="line">    template: <span class="string">"&lt;test-1/&gt; "</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个名为test的组件，然后引入test-2 */</span></span><br><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    imports: [<span class="string">"test-2"</span>],</span><br><span class="line">    template: <span class="string">"&lt;test-2/&gt;World"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        h: <span class="string">"Hello"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个名为test-1的组件 */</span></span><br><span class="line">Ale(<span class="string">"test-1"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.data.h; <span class="comment">/* 这里访问了test组件的数据 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个名为test-2的组件 */</span></span><br><span class="line">Ale(<span class="string">"test-2"</span>, &#123;</span><br><span class="line">    imports: [<span class="string">"test-1"</span>],</span><br><span class="line">    template: <span class="string">"&lt;test-1/&gt; "</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个名为test的组件，然后引入test-2 */</span></span><br><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    imports: [<span class="string">"test-2"</span>],</span><br><span class="line">    template: <span class="string">"&lt;test-2/&gt;World"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        h: <span class="string">"Hello"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p class="demo" id="app3"></p>
 
-<script src="../../../../js/Ale.min.js"></script>
+<ul>
+<li><p>整个复合组件共用一个methods。</p>
+</li>
+<li><p>整个复合组件共用一个proxy。</p>
+</li>
+<li><p>整个复合组件共用一个life。</p>
+</li>
+</ul>
+<h4 id="引入局部组件"><a href="#引入局部组件" class="headerlink" title="引入局部组件"></a>引入局部组件<div class="v100-add"></div></h4><p>如果你想引入局部组件，直接在 <code>imports</code> 属性里引用 <code>Ale局部组件生成对象</code> 即可。</p>
+<p>同时你需要给局部组件增加一个 <code>name</code> 属性，否则 Ale 没有办法区分局部组件的名称【默认为unknown】：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个名为test-1的局部组件 */</span></span><br><span class="line"><span class="keyword">var</span> test1 = Ale(&#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.data.h; <span class="comment">/* 这里访问了test组件的数据 */</span></span><br><span class="line">    &#125;,</span><br><span class="line">    name: <span class="string">"test1"</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个名为test-2的组件 */</span></span><br><span class="line"><span class="keyword">var</span> test2 = Ale(&#123;</span><br><span class="line">    imports: [test1],</span><br><span class="line">    template: <span class="string">"&lt;test1/&gt; "</span>,</span><br><span class="line">    name: <span class="string">"test2"</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个名为test的组件，然后引入test-2 */</span></span><br><span class="line"><span class="keyword">var</span> test = Ale(&#123;</span><br><span class="line">    imports: [test2],</span><br><span class="line">    template: <span class="string">"&lt;test2/&gt;World"</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        h: <span class="string">"Hello"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">test.render(&#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p class="demo" id="app4"></p>
+
+
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 Ale("test-1", {
     template: "Hello"
@@ -242,7 +268,7 @@ Ale.render("test-3", {
 
 Ale("test-4", {
     template: function(){
-        return this.h;
+        return this.data.h;
     }
 })
 
@@ -261,6 +287,30 @@ Ale("test-6", {
 
 Ale.render("test-6", {
     el: "#app3"
+})
+
+var test1 = Ale({
+    template: function(){
+        return this.data.h;
+    },
+    name: "test1"
+})
+
+var test2 = Ale({
+    imports: [test1],
+    template: "<test1/> ",
+    name: "test2"
+})
+
+var test = Ale({
+    imports: [test2],
+    template: "<test2/>World",
+    data: {
+        h: "Hello"
+    }
+})
+test.render({
+    el: "#app4"
 })
 </script>
 </section>

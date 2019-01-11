@@ -155,6 +155,22 @@ pre {
   margin: auto;
   text-align: center;
 }
+.v100-add::before {
+  display: inline-block;
+  content: "【1.0.0+】";
+  color: #008000;
+}
+.v100-add {
+  display: inline-block;
+}
+.v100-remove::before {
+  display: inline-block;
+  content: "【1.0.0-】";
+  color: #f00;
+}
+.v100-remove {
+  display: inline-block;
+}
 .view-box {
   display: inline-block;
   height: 60px;

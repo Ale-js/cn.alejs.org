@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -190,7 +202,8 @@
 <main class="app-body flex-box guide-main">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h1><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>当你有一个庞大的前端系统时，如果没有办法监测数据的变化，那么调试就将变成噩梦。</p>
+    <section class="markdown-content"><h1 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式<div class="v100-remove"></div></h1><h3 id="更新信息"><a href="#更新信息" class="headerlink" title="更新信息"></a>更新信息</h3><p>1.0.0 版本已经移除了 <code>debug</code> 配置。如果想实现类似效果，请使用 <a href="/guide/v1/ComponentProxy">proxy</a> 参数。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>当你有一个庞大的前端系统时，如果没有办法监测数据的变化，那么调试就将变成噩梦。</p>
 <p><code>debug</code> 参数的出现很好地解决了这个问题，你可以在组件<code>定义</code>或<code>渲染</code>时添加<code>debug</code>参数（渲染时的debug参数将会完全覆盖定义时设置的debug参数）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 在定义时添加 */</span></span><br><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    <span class="comment">/* ...... */</span></span><br><span class="line">    debug: &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 或者在渲染时动态添加 */</span></span><br><span class="line">Ale.render(<span class="string">"test"</span>, &#123;</span><br><span class="line">    <span class="comment">/* ...... */</span></span><br><span class="line">    debug: &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p><code>debug</code>参数内置有两个函数：<code>setter</code>和<code>getter</code>，分别监测组件数据的设置和获取 <strong>（其中，setter和getter各需要一个参数，用来接收值）</strong>：</p>

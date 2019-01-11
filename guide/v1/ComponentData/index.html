@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0-Beta.1+</option>
+        <option selected value="1.X">1.0-Beta.1 - 1.0</option>
     </select>
 
     <div id="v1X">
@@ -153,21 +153,33 @@
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentData" class="sidebar-link">Data</a>
         <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentStaticData" class="sidebar-link">静态Data<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentLife" class="sidebar-link">生命周期</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentMethod" class="sidebar-link">Method</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/ComponentImport" class="sidebar-link">复合组件</a>
         <div class="sidebar-br"></div>
-        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式</a>
+        <a href="/guide/v1/ComponentDebug" class="sidebar-link">调试模式<div class="v100-remove"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentProxy" class="sidebar-link">代理<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentDataType" class="sidebar-link">数据类型判定<div class="v100-add"></div></a>
         <h3>扩展</h3>
         <a href="/guide/v1/plugin" class="sidebar-link">插件</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/ComponentWatch" class="sidebar-link">Watch<div class="v100-add"></div></a>
         <h3>高级</h3>
         <a href="/guide/v1/version" class="sidebar-link">版本</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/config" class="sidebar-link">配置</a>
         <div class="sidebar-br"></div>
         <a href="/guide/v1/filter" class="sidebar-link">过滤器</a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/nextTick" class="sidebar-link">异步队列<div class="v100-add"></div></a>
+        <div class="sidebar-br"></div>
+        <a href="/guide/v1/other" class="sidebar-link">其他函数<div class="v100-add"></div></a>
         <h3>内在</h3>
         <a href="/guide/v1/deepInRespond" class="sidebar-link">深入响应式原理</a>
         <h3>更多</h3>
@@ -195,7 +207,7 @@
 <p><br></p>
 <p>其实很简单，因为模板是静态的，而数据是动态的。如果我们更改某一处数据，其实比更改模板简单得多！</p>
 <p>例如我们先定义一个名为<code>com1</code>的组件，然后把它渲染出来：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span> + <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        name: <span class="string">"World"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ale(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span> + <span class="keyword">this</span>.data.name;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        name: <span class="string">"World"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Ale.render(<span class="string">"com1"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>渲染结果如下：</p>
 <p id="app" class="demo"></p>
 
@@ -209,23 +221,27 @@
 <p id="app2" class="demo"></p>
 
 <p>同时，我们的数据将会自动绑定在组件内的全部元素上，使用 <code>this.data</code> 即可访问，例如我们来做个记录点击次数的组件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义组件 */</span></span><br><span class="line">Ale(<span class="string">"counter"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">/* 这里让 this.data.count 自增 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&lt;button onclick='this.data.count++'&gt;You clicked me "</span> + <span class="keyword">this</span>.count + <span class="string">" times."</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 渲染组件 */</span></span><br><span class="line">Ale.render(<span class="string">"counter"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义组件 */</span></span><br><span class="line">Ale(<span class="string">"counter"</span>, &#123;</span><br><span class="line">    template: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">/* 这里让 this.data.count 自增 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"&lt;button onclick='this.data.count++'&gt;You clicked me "</span> + <span class="keyword">this</span>.data.count + <span class="string">" times."</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 渲染组件 */</span></span><br><span class="line">Ale.render(<span class="string">"counter"</span>, &#123;</span><br><span class="line">    el: <span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p class="demo" id="app3"></p>
 
 <p>其实数据不光可以应用在模板上，也可以应用在任何支持函数的属性上。当然，每当你更新数据时，这些绑定数据的属性也会得到更新。</p>
 <p>具体有哪些属性可以应用数据，请继续往下查看教程！</p>
-<h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><p>如果你了解过 Vue，你将会发现，使用 Vue 设置数据需要添加一个函数，然后使用 return 返回需要的数据：</p>
+<h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><h4 id="关于-Vue"><a href="#关于-Vue" class="headerlink" title="关于 Vue"></a>关于 Vue</h4><p>如果你了解过 Vue，你将会发现，使用 Vue 设置数据需要添加一个函数，然后使用 return 返回需要的数据：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="comment">/* 这里添加 data */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Vue 这么做是因为每次 JavaScript 引擎复制对象时，会连同对象的内存地址一块复制，这样会导致一个对象更新时另一个对象也会更新。这时如果我们使用函数每次返回一个对象，就而相当于每次新创建了一个内存地址不同的新对象，就不会有上述问题了。</p>
 <p><br></p>
 <p>可是这么做会导致你需要书写的代码量增多，而 Ale 使用深拷贝从对象根部进行扫描，并逐层创建一个全新的对象。这样做会造成一定的性能损耗（小数据量时忽略不计），但是同时也减少了你需要书写的代码量。</p>
 <p><br></p>
 <p>如果你需要多个组件共用一套数据，请尝试让一个组件在一次渲染时同时渲染多个元素，或使用 <a href="/guide/v1/ComponentImport">复合组件</a>。</p>
-<script src="../../../../js/Ale.min.js"></script>
+<h4 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h4><p>你也可以使用 <code>app.data</code> 这种格式设置组件的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.data = &#123;</span><br><span class="line">    count: 1,</span><br><span class="line">    key: &quot;val&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="提升性能"><a href="#提升性能" class="headerlink" title="提升性能"></a>提升性能<div class="v100-add"></div></h4><p>在 1.0.0 版本里（及以后），我们让单组件data支持函数类型，能够在极大数据量时显著增加性能（因为不需要深拷贝），不过如果在渲染时动态设置data，那么函数优化将没有任何作用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* 需要使用 return 返回 */</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<script src="../../../../js/Ale.v1.min.js"></script>
 <script>
 Ale("com1", {
     template: function(){
-        return "Hello " + this.name;
+        return "Hello " + this.data.name;
     },
     data: {
         name: "World"
@@ -243,7 +259,7 @@ var app = Ale.render("com1", {
 
 Ale("counter", {
     template: function(){
-        return "<button onclick='this.data.count++'>You clicked me " + this.count + " times.";
+        return "<button onclick='this.data.count++'>You clicked me " + this.data.count + " times.";
     },
     data: {
         count: 0
