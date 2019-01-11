@@ -252,7 +252,7 @@ var app = Ale.render("test", {
 
 Ale('test2', {
     template: function(){
-        return "重新设置 app2.data.i 的值，只有 app2.data.i 的值会更新，视图不会更新<br>app.data.i 在视图上的值为：" + this.data.i;
+        return "重新设置 app2.data.i 的值，只有 app2.data.i 的值会更新，视图不会更新<br>app2.data.i 在视图上的值为：" + this.data.i;
     },
     proxy: {
         setter: function(obj){
