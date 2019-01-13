@@ -208,7 +208,7 @@
 
 <p>让我们点击上方实例，你将会看到它在控制台中输出了它自己的<code>Ale组件对象</code>。</p>
 <h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><p>可是这造成了一个问题，如果我们的组件需要动态渲染，那我们怎么获取它的 <code>Ale组件对象</code> 呢？</p>
-<p>很简单，只需要在支持函数的属性中使用 <code>this</code> 关键字即可获取 <strong>（1.0.0之前<code>template</code>属性自动绑定的是<code>this.data</code>，而在1.0.0版本及以后，template属性中使用<code>this</code>代指的是渲染完成后的 ale组件对象，也就是 <code>this</code>【但是你只可以访问ale组件对象的data、staticData、methods属性】）</strong>：</p>
+<p>很简单，只需要在支持函数的属性中使用 <code>this</code> 关键字即可获取：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义一个组件 */</span></span><br><span class="line">Ale(<span class="string">"test"</span>, &#123;</span><br><span class="line">    life: &#123;</span><br><span class="line">        mounting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">/* 这里this代指渲染完成之后的Ale组件对象 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>在上方实例中，可能你还不了解<code>life</code>属性的作用，不过我们就是给你演示一下如何使用，具体细节请继续往下查看教程！</p>
 <p>目前全部支持函数的属性：</p>
