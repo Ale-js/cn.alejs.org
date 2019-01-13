@@ -53,7 +53,7 @@ pre {
   display: inline-block;
 }
 #index-ads {
-  height: 90px;
+  height: auto;
   width: 200px;
   margin: auto;
   margin-top: 10px;
