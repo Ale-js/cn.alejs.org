@@ -52,6 +52,12 @@ pre {
   box-sizing: border-box;
   display: inline-block;
 }
+#index-ads {
+  height: 90px;
+  width: 200px;
+  margin: auto;
+  margin-top: 10px;
+}
 .demo {
   border: 1px solid #eee;
   border-radius: 2px;
