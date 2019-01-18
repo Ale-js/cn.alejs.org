@@ -54,9 +54,14 @@ pre {
 }
 #index-ads {
   height: auto;
-  width: 200px;
+  width: 405px;
   margin: auto;
   margin-top: 10px;
+}
+.index-ads {
+  height: auto;
+  width: 200px;
+  display: inline-block;
 }
 .demo {
   border: 1px solid #eee;
