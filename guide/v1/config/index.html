@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0.0 - 1.1.0</option>
+        <option selected value="1.X">1.0.0 - 1.1.1</option>
     </select>
 
     <div id="v1X">
@@ -207,7 +207,7 @@
 <li>html <strong>（默认false）</strong>【数据若存在HTML标签输出则为节点（关闭此选项可以预防xss攻击，不要轻易打开）】</li>
 <li>diff <strong>（默认true）</strong>【是否在操作 DOM 时应用 diff 算法（推荐小应用关闭，中大型应用需要开启）】</li>
 <li>async <strong>（默认true）</strong>【是否启用异步 DOM（推荐开启）】<div class="v100-add"></div></li>
-<li>configLock <strong>（默认false）</strong>【是否锁定配置信息（推荐修改完配置之后就打开）】<div class="v100-add"></div></li>
+<li>configLock <strong>（默认false）</strong>【是否锁定配置信息，锁定后任何配置都不能被修改（推荐修改完配置之后就打开）】<div class="v100-add"></div></li>
 </ul>
 <p>你可以通过如下方式更改某一种配置：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Ale.config(<span class="string">"html"</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 或 */</span></span><br><span class="line"></span><br><span class="line">Ale.config(&#123;</span><br><span class="line">    html: <span class="literal">true</span>,</span><br><span class="line">    diff: <span class="literal">false</span>,</span><br><span class="line">    <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">    configLock: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>

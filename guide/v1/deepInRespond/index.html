@@ -138,7 +138,7 @@
 <div id="sidebar-inner-tran">
     <h2>教程</h2>
     <select id="select-version" style="outline: none;">
-        <option selected value="1.X">1.0.0 - 1.1.0</option>
+        <option selected value="1.X">1.0.0 - 1.1.1</option>
     </select>
 
     <div id="v1X">
@@ -213,7 +213,7 @@
 <p><br></p>
 <p>另外，diff 对比只会在同级 DOM 中进行，一旦发生层级改变，Ale 将不会继续对比，而是直接更新整个层。这样可以有效地增加 diff 的对比性能，减少对比的时间。</p>
 <p><br></p>
-<p>还有一点，Ale 的 <code>diff</code> 算法只会对比元素的 <code>内容</code> \ <code>id</code> \ <code>class</code> \ <code>name</code> 属性是否相同，也就是说，当你动态更新例如 <code>onclick</code> 之类的属性，<code>diff</code> 算法是不会对比出差异的，而元素也就不会更新。这时你可以在元素更新时手动关闭 <code>diff</code> 算法，并在元素更新完成时开启即可！</p>
+<p>还有一点，Ale 的 <code>diff</code> 算法会对比元素的 <code>内容</code> \ <code>属性</code> <strong>【1.1.0版本前只会对比 <code>内容</code> \ <code>id</code> \ <code>class</code> \ <code>name</code>】</strong> 是否相同，也就是说，当你动态更新其他类型的内容，<code>diff</code> 算法是不会对比出差异的，而元素也就不会更新。这时你可以在元素更新时手动关闭 <code>diff</code> 算法，并在元素更新完成时开启即可！</p>
 </section>
     <!-- Tags START -->
     
